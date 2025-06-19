@@ -1,0 +1,507 @@
+body {
+  background-color: #000;
+  background-image: url('../assets/bg-pattern.png');
+  background-size: 200px;
+  background-repeat: repeat;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+
+html {
+  font-size: 16px;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+h1 {
+  text-align: center;
+  font-size: 4rem;
+  margin: 0 0 10px;
+  color: #ffc800;
+}
+
+
+nav {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+nav a {
+  color: #ffc800;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+.countdown-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.countdown {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: #111;
+  border: 2px solid #ffc800;
+  padding: 15px 40px;
+  border-radius: 0px;
+  display: inline-block;
+  margin: 0 auto 30px;
+}
+
+.location-section {
+  text-align: center;
+  padding: 20px;
+}
+
+ul#cop-locations {
+  list-style: none;
+  padding: 0;
+  font-size: 1.5rem;
+}
+button, .tracker-button, .back-button {
+  background-color: #ffc800;
+  color: #000;
+  border: none;
+  padding: 12px 24px;
+  font-weight: bold;
+  border-radius: 0px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  display: inline-block;
+}
+
+button:hover, .tracker-button:hover, .back-button:hover {
+  background-color: #ffdb4d;
+  transform: scale(1.03);
+}
+
+.tracker-button {
+  display: inline-block;
+  margin: 30px auto;
+  padding: 15px 30px;
+  background: #ffc800;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 0px;
+}
+
+.tracker-button:hover {
+  background: #ffdb4d;
+}
+
+.flavor-text {
+  font-style: italic;
+  color: #888;
+  margin-top: 40px;
+}
+
+.map-page {
+  background: #000;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#map-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#base-map {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.cop-marker {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+
+.back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  color: #ffc800;
+  text-decoration: none;
+  font-weight: bold;
+  background: #111;
+  padding: 10px 15px;
+  border: 2px solid #ffc800;
+  border-radius: 0-px;
+  z-index: 999;
+}
+
+.rank-page {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+.rank-list {
+  list-style: none;
+  padding: 0;
+}
+
+.rank-list li {
+  background: #111;
+  border: 2px solid #ffc800;
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 0px;
+}
+
+.rank-list h2 {
+  color: #ffc800;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.rank-list img {
+  width: 300px;
+  max-width: 100%;
+  margin-top: 10px;
+  border-radius: 0px;
+}
+
+.hvl-page {
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: auto;
+  position: relative;
+  text-align: center;
+}
+
+.hvl-list {
+  list-style: none;
+  padding: 0;
+}
+
+.hvl-list li {
+  font-size: 2rem;
+  margin: 20px 0;
+  color: #ffc800;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.hvl-list li:hover {
+  color: #ffffff;
+}
+
+#hover-preview {
+  position: fixed;
+  display: none;
+  width: 300px;
+  max-width: 30vw;
+  border: 2px solid #ffc800;
+  border-radius: 0px;
+  z-index: 1000;
+  pointer-events: none;
+}
+.admin-page {
+  max-width: 800px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.admin-page label {
+  display: block;
+  margin: 20px 0 5px;
+  font-weight: bold;
+  color: #ffc800;
+}
+
+.admin-page select {
+  font-size: 1rem;
+  padding: 10px;
+  width: 300px;
+  max-width: 100%;
+}
+
+.admin-page button {
+  margin-top: 30px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  background-color: #ffc800;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+}
+
+#current-data ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  color: #ccc;
+}
+section, main {
+  transition: all 0.3s ease-in-out;
+}
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .countdown {
+    font-size: 2rem;
+    padding: 10px 20px;
+  }
+
+  .rank-list img,
+  #hover-preview {
+    width: 90%;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 10px 5px;
+  }
+
+  .admin-page select {
+    width: 90%;
+  }
+}
+
+.page-bg {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.page-container {
+  background-color: #000;
+  width: 100%;
+  max-width: 900px;
+  padding: 0 30px 40px 30px; /* already looks good */
+  box-shadow: 0 0 80px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    padding: 20px 15px;
+  }
+}
+
+.page-shell {
+  display: flex;
+  flex-direction: column; /* ✅ This is the missing piece */
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0 20px;
+}
+.page-container {
+  background-color: #000;
+  width: 100%;
+  max-width: 900px;
+  padding: 0 30px 40px 30px; /* remove top padding */
+  box-shadow: 0 0 80px rgba(0, 0, 0, 0.5);
+}
+.vendor-gif {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.vendor-gif img {
+  max-width: 100%;
+  height: auto;
+  width: 600px;
+}
+.top-nav {
+  width: 100%;
+  background-color: #111;
+  border-bottom: 2px solid #ffc800;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 15px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.top-nav a {
+  color: #ffc800;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.top-nav a:hover {
+  color: #fff;
+}
+.top-nav {
+  width: 100%;
+  background-color: #111;
+  border-bottom: 2px solid #ffc800;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 15px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.top-nav a {
+  color: #ffc800;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.top-nav a:hover {
+  color: #fff;
+}
+.orange-text {
+  color: #ffc800; /* your gold-orange */
+}
+
+.white-text {
+  color: #ffffff;
+	}
+
+#map-container {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+}
+#map {
+  width: 100%;
+  height: 80vh;
+  border: 1px solid #000; /* optional */
+}
+
+#zoom-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+#base-map {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: unset;
+  pointer-events: none;
+}
+.cop-marker {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+}
+.top-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 0;
+  background-color: #000;
+  border-bottom: 2px solid #ffc800;
+  position: relative;
+  top: 0;
+}
+
+.top-nav a {
+  color: #ffc800;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.top-nav a:hover,
+.top-nav a.active {
+  color: #fff;
+}
+.cop-card-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.cop-card {
+  background-color: #111;
+  border: 2px solid #ffc800;
+  width: 200px;
+  text-align: center;
+  color: #fff;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.cop-title {
+  background-color: #ffc800;
+  color: #000;
+  font-weight: bold;
+  padding: 10px 0;
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
+.cop-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.cop-grid {
+  padding: 10px 0;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+.top-nav {
+  margin-top: 0;
+  padding-top: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/admin.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>UPDATE VULTURE LOCATION</h1>
+    <nav>
+      <a href="index.html">Home</a>
+    </nav>
+  </header>
+
+  <main class="admin-page">
+    <section>
+      <p>Select two Major CoPs where Vulture is currently located:</p>
+      <label for="cop1">Location 1:</label>
+      <select id="cop1"></select>
+
+      <label for="cop2">Location 2:</label>
+      <select id="cop2"></select>
+
+      <button id="generate">Download JSON</button>
+    </section>
+
+    <section id="current-data">
+      <h2>Current Live Data</h2>
+      <ul id="live-json"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 WhereIsVulture.com</p>
+  </footer>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
