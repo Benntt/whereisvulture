@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Custom Servers | Gray Zone Warfare Community Games</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+  <meta name="description" content="Join our weekly Gray Zone Warfare custom games every Friday at 2 PM EST with Elite Operator DamnitBennett. Hosted live on Twitch, open to all players.">
+</head>
+<body>
+  <div class="page-shell">
+    <nav class="top-nav">
+      <a href="index.html">Home</a>
+      <a href="ranks.html">Vulture Ranks</a>
+      <a href="customs.html" class="active">Custom Servers</a>
+      <a href="who.html">Who is Vulture</a>
+      <a href="http://twitch.tv/damnitbennett">Streams</a>
+    </nav>
+
+    <div class="page-container rank-page">
+        
+      <h1>CUSTOM SERVERS</h1>
+<div class="countdown-section">
+  <p class="subtitle">Next custom server event starts in:</p>
+  <div id="custom-countdown-timer" class="countdown">Loading...</div>
+</div>
+
+      <p>
+        As one of the few <strong>Elite Operators</strong> selected by <strong>Madfinger Games</strong>, I’ve been given access to host <strong>custom servers</strong> in <strong>Gray Zone Warfare</strong>.
+      </p>
+
+      <p>
+        Every <strong>Friday at 2PM EST</strong>, I go live on <a href="https://twitch.tv/damnitbennett" target="_blank" style="color:#ffc800;">Twitch</a> to run exclusive custom game events with our community. PvP, tactical missions, chaos, and good vibes — all live and all community driven.
+      </p>
+
+      <p>
+        Everyone is welcome. Whether you're a veteran PMC or a fresh recruit, jump in and be part of the action.
+      </p>
+
+      <p>
+        Get the latest details and sign-up instructions by joining the community on <a href="https://discord.gg/damnitbennett" target="_blank" style="color:#ffc800;">Discord</a>.
+      </p>
+
+      <blockquote class="flavor-text">"You don’t need to queue solo when you’ve got a squad like this."</blockquote>
+    </div>
+<script src="js/script.js"></script>
+
+    <footer>
+      <p>&copy; 2025 WhereIsVulture.com</p>
+    </footer>
+  </div>
+  <div class="support-banner" id="supportBanner">
+  <span>Enjoying this site?</span>
+  <a href="https://www.twitch.tv/products/damnitbennett" target="_blank" class="twitch-sub-button">
+    <img src="https://cdn.simpleicons.org/twitch/9146FF" alt="Twitch Logo" class="twitch-icon" />
+    Consider subscribing to DamnitBennett 🤘🏻
+  </a>
+  <button class="close-banner" aria-label="Close banner">&times;</button>
+</div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      const banner = document.querySelector('.support-banner');
+      if (banner) {
+        banner.classList.add('visible');
+      }
+    }, 4000); // 4 seconds delay
+  });
+</script>
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      const banner = document.getElementById('supportBanner');
+      if (banner && !localStorage.getItem('hideSupportBanner')) {
+        banner.classList.add('visible');
+      }
+    }, 4000);
+
+    const closeBtn = document.querySelector('.close-banner');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        const banner = document.getElementById('supportBanner');
+        if (banner) {
+          banner.style.display = 'none';
+          localStorage.setItem('hideSupportBanner', 'true');
+        }
+      });
+    }
+  });
+</script>
+<script src="script.js"></script>
+
+</body>
+</html>

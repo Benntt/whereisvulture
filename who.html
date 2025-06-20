@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Who Is Vulture? | Gray Zone Warfare Black Market Vendor Lore</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+  <meta name="description" content="Discover the mysterious black market vendor Vulture in Gray Zone Warfare. Learn about his lore, mechanics, and how he rotates across Major CoPs selling lost player gear.">
+</head>
+<body>
+  <div class="page-shell">
+    <nav class="top-nav">
+      <a href="index.html">Home</a>
+      <a href="ranks.html">Vulture Ranks</a>
+      <a href="customs.html">Custom Servers</a>
+      <a href="who.html" class="active">Who is Vulture</a>
+      <a href="http://twitch.tv/damnitbennett">Streams</a>
+    </nav>
+
+    <div class="page-container hvl-page">
+      <h1>WHO IS VULTURE?</h1>
+
+      <p>
+        In <strong>Gray Zone Warfare</strong>, Vulture is a secretive black market vendor who operates outside the rules of engagement. He appears only at select <strong>Major Combat Outposts (CoPs)</strong>, rotating weekly across all servers — but never at more than two CoPs at a time.
+      </p>
+
+      <p>
+        According to lore on the official Gray Zone Warfare site, Vulture was active in the underground weapons trade long before the Lamang Island evacuation. When chaos took over, he saw opportunity — growing his black market empire in the shadows of military collapse.
+      </p>
+
+      <p>
+        Vulture sells items recovered from the battlefield — specifically weapons and gear dropped by players who died and didn’t reclaim their loot. These salvaged items always have <strong>at least 95% durability</strong>. If an item was below 95% when lost, Vulture has it repaired before reselling.
+      </p>
+
+      <p>
+        Not everything he sells is dynamic, however. A handful of static items are always available in his shop, providing consistent value for those who track him down and rank him up.
+      </p>
+
+      <p>
+        Vulture is always tied to Major CoPs and resets <strong>every Monday at 5:00 AM EST</strong>. That’s when you’ll need to start looking.
+      </p>
+
+
+      <blockquote class="flavor-text">
+        "HE DOESN’T CARE WHO YOU ARE — ONLY WHAT YOU CAN TRADE."
+      </blockquote>
+
+      <p>
+        Bookmark this site to track his real-time locations and get the latest updates. If you want to find Vulture, you’ll need timing, luck, and maybe a little help.
+      </p>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 WhereIsVulture.com</p>
+    </footer>
+  </div>
+ <div class="support-banner" id="supportBanner">
+  <span>Enjoying this site?</span>
+  <a href="https://www.twitch.tv/products/damnitbennett" target="_blank" class="twitch-sub-button">
+    <img src="https://cdn.simpleicons.org/twitch/9146FF" alt="Twitch Logo" class="twitch-icon" />
+    Consider subscribing to DamnitBennett 🤘🏻
+  </a>
+  <button class="close-banner" aria-label="Close banner">&times;</button>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      const banner = document.querySelector('.support-banner');
+      if (banner) {
+        banner.classList.add('visible');
+      }
+    }, 4000); // 4 seconds delay
+  });
+</script>
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      const banner = document.getElementById('supportBanner');
+      if (banner && !localStorage.getItem('hideSupportBanner')) {
+        banner.classList.add('visible');
+      }
+    }, 4000);
+
+    const closeBtn = document.querySelector('.close-banner');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        const banner = document.getElementById('supportBanner');
+        if (banner) {
+          banner.style.display = 'none';
+          localStorage.setItem('hideSupportBanner', 'true');
+        }
+      });
+    }
+  });
+</script>
+<script src="script.js"></script>
+
+</body>
+</html>

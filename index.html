@@ -10,16 +10,17 @@
 <body>
   <div class="page-shell">
     <!-- Full-width Top Navigation -->
-    <nav class="top-nav">
-      ...
-    </nav>
-
-    <!-- Centered Page Content -->
+	   <nav class="top-nav">
+  <a href="index.html" class="active">Home</a>
+  <a href="ranks.html">Vulture Ranks</a>
+  <a href="customs.html">Custom Servers</a>
+  <a href="who.html">Who is Vulture</a>
+  <a href="http://twitch.tv/damnitbennett">Streams</a>
+ 
+</nav>
+   <!-- Centered Page Content -->
     <div class="page-container">
-      ...
 
-  <div class="page-shell">
-    <div class="page-container">
       <header>
         <h1>
   <span class="orange-text">WHERE</span> 
@@ -34,9 +35,11 @@
 
       <main>
         <section class="countdown-section">
-          <p class="subtitle">The reset happens every Monday at 5:00 AM EST</p>
-          <div id="countdown-timer" class="countdown">Loading...</div>
-			<section class="cop-card-wrapper">
+          <p class="subtitle">
+  The reset happens every Monday at <span id="local-reset-time">5:00 AM EST</span>
+</p>
+<div id="countdown-timer" class="countdown">Loading...</div>
+			<div class="cop-card-wrapper">
   <div class="cop-card">
     <div class="cop-title">CRUSADER</div>
     <img src="assets/crusader.png" alt="Crusader Location">
@@ -47,26 +50,114 @@
     <img src="assets/nomad.png" alt="Nomad Location">
     <div class="cop-grid">189, 158</div>
   </div>
-</section>
 
-        </section>
+        </div>
+
 
         <section class="location-section">
           <p>Vulture is currently located at:</p>
           <ul id="cop-locations"></ul>
 
-          <a href="tracker.html" class="tracker-button">VIEW ON MAP</a>
+          <a href="#" class="tracker-button coming-soon" title="Coming soon" onclick="return false;">VIEW ON MAP</a>
+
 
           <blockquote class="flavor-text">"Some call him a myth. We call him payday."</blockquote>
         </section>
       </main>
 
       <footer>
+		  <section class="seo-lore">
+  <div class="seo-content">
+    <h2>Who is Vulture?</h2>
+    <p>
+      Vulture is a shadowy vendor operating somewhere deep in Lamang — a man of myth, whispers, and war stories. 
+      No one knows his real name or where he came from, but those lucky enough to find him know this: 
+      he pays well, deals in high-tier black market gear, and moves locations every week to avoid detection.
+    </p>
+    <p>
+      Every Monday at 5:00 AM EST, Vulture resets and appears in one of several Major CoP locations. 
+      Players who track him down can exchange rare items, weapons, and gear for cash or trade. 
+      Some say he's ex-military, others say he's an AI gone rogue — whatever the truth, finding Vulture means payday.
+    </p>
+    <p>
+      This site is dedicated to helping you find him fast. No fluff, no distractions — just the facts. 
+      Bookmark it, share it, and never miss a Monday reset again.
+    </p>
+  </div>
+</section>
+
         <p>&copy; 2025 WhereIsVulture.com</p>
       </footer>
     </div>
   </div>
 
   <script src="js/script.js"></script>
+	  <script>
+  function getLocalResetTime() {
+    const estReset = new Date();
+
+    // Set to next Monday at 5:00 AM EST (which is 10:00 UTC)
+    estReset.setUTCHours(10, 0, 0, 0); // 5 AM EST = 10 AM UTC
+    const day = estReset.getUTCDay();
+    const diff = (1 + 7 - day) % 7 || 7;
+    estReset.setUTCDate(estReset.getUTCDate() + diff);
+
+    const localTime = estReset.toLocaleTimeString([], {
+      hour: 'numeric',
+      minute: '2-digit',
+      timeZoneName: 'short'
+    });
+
+    const localSpan = document.getElementById('local-reset-time');
+    if (localSpan) {
+      localSpan.textContent = localTime.toUpperCase();
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', getLocalResetTime);
+</script>
+<div class="support-banner" id="supportBanner">
+  <span>Enjoying this site?</span>
+  <a href="https://www.twitch.tv/products/damnitbennett" target="_blank" class="twitch-sub-button">
+    <img src="https://cdn.simpleicons.org/twitch/9146FF" alt="Twitch Logo" class="twitch-icon" />
+    Consider subscribing to DamnitBennett 🤘🏻
+  </a>
+  <button class="close-banner" aria-label="Close banner">&times;</button>
+</div>
+
+
+      <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      const banner = document.querySelector('.support-banner');
+      if (banner) {
+        banner.classList.add('visible');
+      }
+    }, 4000); // Show after 4 seconds
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      const banner = document.getElementById('supportBanner');
+      if (banner && !localStorage.getItem('hideSupportBanner')) {
+        banner.classList.add('visible');
+      }
+    }, 4000);
+
+    const closeBtn = document.querySelector('.close-banner');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        const banner = document.getElementById('supportBanner');
+        if (banner) {
+          banner.style.display = 'none';
+          localStorage.setItem('hideSupportBanner', 'true');
+        }
+      });
+    }
+  });
+</script>
+<script src="script.js"></script>
+
 </body>
 </html>

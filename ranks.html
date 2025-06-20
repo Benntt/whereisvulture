@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vulture Ranks</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="page-shell">
+   	   <nav class="top-nav">
+  <a href="index.html" class="active">Home</a>
+  <a href="ranks.html">Vulture Ranks</a>
+  <a href="customs.html">Custom Servers</a>
+  <a href="who.html">Who is Vulture</a>
+  <a href="http://twitch.tv/damnitbennett">Streams</a>
+ 
+</nav>
+
+    <div class="page-container">
+      <header>
+        <h1>
+          <span class="orange-text">VULTURE</span>
+          <span class="white-text">RANKS</span>
+        </h1>
+      </header>
+
+      <main class="rank-page">
+        <section>
+          <h2>HOW TO RANK UP</h2>
+          <p>To increase your Vulture rank in Gray Zone Warfare, you must sell him HVL—High Value Loot. This includes rare and valuable items like watches, jewelry, cameras, electronics, credit cards, and alcohol. The more valuable the item, the more reputation you earn.
+
+⚠️ Note: You do not gain rep by buying items from Vulture—only selling HVL increases your rank.
+
+Ranking up Vulture unlocks exclusive weapons, gear, and high-tier rewards. Keep looting, focus on valuable items, and sell directly to Vulture to level up fast.
+
+</p>
+        </section>
+
+        <section>
+          <h2>RANK REWARDS</h2>
+          <ul class="rank-list">
+            <li>
+              <h2>Rank 1: Basic 1911 Pistol Parts</h2>
+              <p>Start small with essentials for your secondary weapon.</p>
+              <img src="assets/rank1.png" alt="1911 Pistol Parts">
+            </li>
+            <li>
+              <h2>Rank 2: MP7A2 Submachine Gun</h2>
+              <p>A compact, high fire-rate SMG for close-quarters combat.</p>
+              <img src="assets/rank2.png" alt="MP7A2 Submachine Gun">
+            </li>
+            <li>
+              <h2>Rank 3: Custom SVD Marksman Rifle</h2>
+              <p>Reliable DMR perfect for long-range engagements.</p>
+              <img src="assets/rank3.png" alt="SVD Marksman Rifle">
+            </li>
+            <li>
+              <h2>Rank 4: AK-308 Battle Rifle</h2>
+              <p>Heavy-hitting 7.62 rifle for high damage and precision.</p>
+              <img src="assets/rank4.png" alt="AK-308 Battle Rifle">
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>PRO TIPS TO LEVEL UP</h2>
+          <ul class="rank-list">
+            <li>Prioritize HVL items and horde them in your stash till you can vist Vulture.</li>
+            <li>Learn where the high-value loot spawns.</li>
+            <li>Don't get greedy—extract early if you’re holding big value.</li>
+          </ul>
+        </section>
+      </main>
+
+      <footer>
+        <p>&copy; 2025 WhereIsVulture.com</p>
+      </footer>
+    </div>
+  </div>
+    <div class="support-banner" id="supportBanner">
+  <span>Enjoying this site?</span>
+  <a href="https://www.twitch.tv/products/damnitbennett" target="_blank" class="twitch-sub-button">
+    <img src="https://cdn.simpleicons.org/twitch/9146FF" alt="Twitch Logo" class="twitch-icon" />
+    Consider subscribing to DamnitBennett 🤘🏻
+  </a>
+  <button class="close-banner" aria-label="Close banner">&times;</button>
+</div>
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      const banner = document.querySelector('.support-banner');
+      if (banner) {
+        banner.classList.add('visible');
+      }
+    }, 4000); // 4 seconds delay
+  });
+</script>
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      const banner = document.getElementById('supportBanner');
+      if (banner && !localStorage.getItem('hideSupportBanner')) {
+        banner.classList.add('visible');
+      }
+    }, 4000);
+
+    const closeBtn = document.querySelector('.close-banner');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        const banner = document.getElementById('supportBanner');
+        if (banner) {
+          banner.style.display = 'none';
+          localStorage.setItem('hideSupportBanner', 'true');
+        }
+      });
+    }
+  });
+</script>
+<script src="script.js"></script>
+
+</body>
+</html>
