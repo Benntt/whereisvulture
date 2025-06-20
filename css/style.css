@@ -1,13 +1,15 @@
 body {
-  background-color: #000;
-  background-image: url('../assets/bg-pattern.png');
-  background-size: 200px;
+  background-color: #0a0a0a;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: 0 0;
   background-repeat: repeat;
   margin: 0;
   padding: 0;
   font-family: 'Roboto Condensed', sans-serif;
 }
-
 
 html {
   font-size: 16px;
@@ -17,15 +19,15 @@ html {
 
 h1 {
   text-align: center;
-  font-size: 4rem;
-  margin: 0 0 10px;
+  font-size: 6rem;
+  margin: 0;
   color: #ffc800;
 }
 
 
 nav {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 0px;
 }
 
 nav a {
@@ -55,6 +57,7 @@ nav a {
   font-size: 2.5rem;
   font-weight: bold;
   background: #111;
+  color: #ffc800;
   border: 2px solid #ffc800;
   padding: 15px 40px;
   border-radius: 0px;
@@ -139,8 +142,6 @@ button:hover, .tracker-button:hover, .back-button:hover {
   pointer-events: auto;
   cursor: pointer;
 }
-
-
 .back-button {
   position: fixed;
   top: 20px;
@@ -160,7 +161,18 @@ button:hover, .tracker-button:hover, .back-button:hover {
   max-width: 900px;
   margin: auto;
   text-align: center;
+  color: #ccc; /* LIGHTER TEXT COLOR */
 }
+
+.rank-page p,
+.rank-page li {
+  color: #ccc;
+}
+
+.rank-page h2 {
+  color: #ffc800; /* keep headings gold */
+}
+
 
 .rank-list {
   list-style: none;
@@ -316,7 +328,7 @@ section, main {
   justify-content: flex-start;
   align-items: center;
   min-height: 100vh;
-  padding: 0 20px;
+  padding: 0;
 }
 .page-container {
   background-color: #000;
@@ -347,7 +359,6 @@ section, main {
   position: relative;
   z-index: 10;
 }
-
 .top-nav a {
   color: #ffc800;
   text-decoration: none;
@@ -356,20 +367,22 @@ section, main {
   text-transform: uppercase;
   transition: color 0.2s ease;
 }
-
 .top-nav a:hover {
   color: #fff;
 }
 .top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   width: 100%;
   background-color: #111;
   border-bottom: 2px solid #ffc800;
   display: flex;
   justify-content: center;
-  gap: 40px;
-  padding: 15px 0;
-  position: relative;
-  z-index: 10;
+  gap: 2rem;
+  padding: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+
 }
 
 .top-nav a {
@@ -433,6 +446,7 @@ section, main {
   border-bottom: 2px solid #ffc800;
   position: relative;
   top: 0;
+  margin-top: 10px; /* corrected spacing */
 }
 
 .top-nav a {
@@ -490,10 +504,7 @@ body, html {
   padding: 0;
 }
 
-.top-nav {
-  margin-top: 0;
-  padding-top: 0;
-}
+
 body {
   margin: 0;
   padding: 0;
@@ -504,4 +515,189 @@ html {
   margin: 0;
   padding: 0;
   border: 0;
+}
+.top-nav + .page-container {
+  margin-top: 0;
+}
+
+.page-shell {
+  padding: 0;
+}
+header {
+  margin-top: 0;
+  padding-top: 0;
+}
+.seo-lore {
+  padding: 60px 20px;
+  background-color: #000;
+  color: #ccc;
+  font-size: 1rem;
+  line-height: 1.8;
+  text-align: left;
+  max-width: 900px;
+  margin: 0 auto;
+  border-top: 1px solid #333;
+}
+
+.seo-lore h2 {
+  color: #ffc800;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.seo-lore {
+  padding: 60px 20px;
+  background-color: #000;
+  color: #ccc;
+  font-size: 1rem;
+  line-height: 1.8;
+  text-align: left;
+  max-width: 900px;
+  margin: 0 auto;
+  border-top: 1px solid #333;
+  text-transform: uppercase; /* ← This line makes all text all-caps */
+}
+
+.seo-lore h2 {
+  color: #ffc800;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+body, h1, h2, h3, h4, h5, h6, p, a, li, button, .countdown, .cop-title, .cop-grid, .tracker-button, .subtitle, blockquote {
+  text-transform: uppercase;
+}
+.coming-soon {
+  pointer-events: auto;
+  cursor: not-allowed;
+  opacity: 0.6;
+  position: relative;
+}
+
+.coming-soon:hover::after {
+  content: "COMING SOON";
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000;
+  color: #ffc800;
+  padding: 5px 10px;
+  border: 1px solid #ffc800;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  z-index: 999;
+}
+
+.hvl-page {
+  color: #ddd;
+}
+
+.hvl-page p,
+.hvl-page li {
+  color: #ddd;
+}
+
+.hvl-page h2 {
+  color: #ffc800;
+}
+
+.hvl-page blockquote {
+  color: #aaa;
+}
+.support-banner {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #9146FF;
+  color: white;
+  text-align: center;
+  padding: 12px 20px;
+  font-weight: bold;
+  font-size: 1rem;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.4);
+  text-transform: none;
+}
+
+.twitch-sub-button {
+  background: white;
+  color: #9146ff;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.twitch-sub-button:hover {
+  background: #f2f2f2;
+  transform: scale(1.05);
+}
+
+@media (max-width: 500px) {
+  .support-banner {
+    display: none;
+  }
+}
+/* Support Banner - Fade In */
+.support-banner {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  pointer-events: none; /* Prevent clicks while hidden */
+}
+
+.support-banner.visible {
+  opacity: 1;
+  transform: translateY(0%);
+  pointer-events: auto;
+}
+
+.twitch-sub-button {
+  background: white;
+  color: #9146FF;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.twitch-sub-button:hover {
+  background: #f2f2f2;
+  transform: scale(1.05);
+}
+
+.twitch-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+.close-banner {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  margin-left: 12px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close-banner:hover {
+  color: #dddddd;
+}
+
+.support-banner {
+  /* existing styles already present */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
