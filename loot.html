@@ -21,7 +21,8 @@
     <!-- Full-width Top Navigation -->
 	   <nav class="top-nav">
   <a href="index.html" class="active">Home</a>
-  <a href="ranks.html">Vulture Ranks</a>
+  <a href="ranks.html">Vulture Ranks</a><br>
+<a href="loot.html">HVL</a>
   <a href="customs.html">Custom Servers</a>
   <a href="who.html">Who is Vulture</a>
   <a href="http://twitch.tv/damnitbennett">Streams</a>
@@ -29,9 +30,9 @@
 </nav>
    <!-- Centered Page Content -->
     <div class="page-container">
-
-     <section class="loot-table-section">
+<section class="loot-table-section">
   <h1><span class="orange-text">High Value Loot</span></h1>
+  <p class="loot-note">* = confirmed prices based on in-game sales</p>
   <table class="vulture-loot-table">
     <thead>
       <tr>
@@ -42,47 +43,75 @@
       </tr>
     </thead>
     <tbody>
-      <tr><td>MTWatch</td><td>Majestic Titanium Watch</td><td>6000</td><td>3000</td></tr>
-      <tr><td>PDRing</td><td>Platinum Ring</td><td>5500</td><td>2750</td></tr>
-      <tr><td>BCCard</td><td>Black Credit Card</td><td>4000</td><td>2000</td></tr>
-      <tr><td>GDRing</td><td>Diamond Ring</td><td>2200</td><td>1100</td></tr>
-      <tr><td>SWatch</td><td>Sleek Luxury Watch</td><td>2000</td><td>1000</td></tr>
-      <tr><td>PCCard</td><td>Platinum Credit Card</td><td>1600</td><td>800</td></tr>
-      <tr><td>Maoutai</td><td>Moutai - 50y</td><td>2500</td><td>1250</td></tr>
-      <tr><td>BLPhone</td><td>Black Luxury Phone</td><td>1200</td><td>600</td></tr>
-      <tr><td>EnHDD</td><td>Encrypted Hard Disk Drive</td><td>1200</td><td>600</td></tr>
-      <tr><td>GCCard</td><td>Gold Credit Card</td><td>800</td><td>400</td></tr>
-      <tr><td>SPendant</td><td>Sapphire Pendant</td><td>750</td><td>375</td></tr>
-      <tr><td>ENecklace</td><td>Emerald Necklace</td><td>720</td><td>360</td></tr>
-      <tr><td>DCRing</td><td>Diamond-Coral Ring</td><td>708</td><td>354</td></tr>
-      <tr><td>DAEarrings</td><td>Diamond Earrings</td><td>690</td><td>345</td></tr>
-      <tr><td>ERing</td><td>Elaborate Ring</td><td>672</td><td>336</td></tr>
-      <tr><td>PPEarrings</td><td>Perfect Pearl Earrings</td><td>660</td><td>330</td></tr>
-      <tr><td>Allanach</td><td>Allanach Single Malt Scotch - 40y</td><td>1250</td><td>625</td></tr>
-      <tr><td>LPhone</td><td>Luxury Smartphone</td><td>600</td><td>300</td></tr>
-      <tr><td>LWatch</td><td>Luxury Smartwatch</td><td>600</td><td>300</td></tr>
-      <tr><td>Breda</td><td>Breda Rum - 30y</td><td>1000</td><td>500</td></tr>
-      <tr><td>Intel</td><td>Army Intel</td><td>640</td><td>320</td></tr>
-      <tr><td>DSLR</td><td>Reflex Camera</td><td>640</td><td>320</td></tr>
-      <tr><td>Tzintzimitl</td><td>Tzintzimitl Tequila - 25y</td><td>528</td><td>264</td></tr>
-      <tr><td>Goodlad</td><td>Goodlad Whisky - 20y</td><td>480</td><td>240</td></tr>
-      <tr><td>CCCard</td><td>Common Credit Card</td><td>200</td><td>100</td></tr>
-      <tr><td>ReLaptop</td><td>Reinforced Military Laptop</td><td>768</td><td>384</td></tr>
-      <tr><td>DNecklace</td><td>Dark Pearl Necklace</td><td>188</td><td>94</td></tr>
-      <tr><td>GRing</td><td>Gemstone Ring</td><td>173</td><td>86</td></tr>
-      <tr><td>Necklace</td><td>Gold Necklace</td><td>165</td><td>82</td></tr>
-      <tr><td>Ring</td><td>Gold Ring</td><td>158</td><td>79</td></tr>
-      <tr><td>SPhone</td><td>Smartphone</td><td>158</td><td>79</td></tr>
-      <tr><td>EPhone</td><td>Expensive Smartphone</td><td>150</td><td>75</td></tr>
-      <tr><td>MWatch</td><td>Modern Watch</td><td>150</td><td>75</td></tr>
-      <tr><td>DigiCam</td><td>Digital Camera</td><td>140</td><td>70</td></tr>
-      <tr><td>Intel</td><td>Crime-related Intel</td><td>140</td><td>70</td></tr>
-      <tr><td>SWine</td><td>Snake Wine</td><td>120</td><td>60</td></tr>
-      <tr><td>Laptop</td><td>Laptop</td><td>168</td><td>84</td></tr>
-      <tr><td>DogTag</td><td>LAF Dog Tag</td><td>6</td><td>3</td></tr>
+      <tr><td>MTWatch</td><td><span class="hover-image" data-img="assets/MTWatch_D.webp">Majestic Titanium Watch</span></td><td>6000</td><td>3000</td></tr>
+      <tr><td>PDRing</td><td><span class="hover-image" data-img="assets/PDRing_icon.webp">Platinum Ring</span></td><td>*5500</td><td>*2750</td></tr>
+      <tr><td>BCCard</td><td><span class="hover-image" data-img="assets/BCCard_icon.webp">Black Credit Card</span></td><td>4000</td><td>2000</td></tr>
+      <tr><td>GDRing</td><td><span class="hover-image" data-img="assets/Diamond_Ring.webp">Diamond Ring</span></td><td>2200</td><td>1100</td></tr>
+      <tr><td>SWatch</td><td><span class="hover-image" data-img="assets/Sleek_Luxury_Watch.webp">Sleek Luxury Watch</span></td><td>2000</td><td>1000</td></tr>
+      <tr><td>PCCard</td><td><span class="hover-image" data-img="assets/Platinum_credit_card.webp">Platinum Credit Card</span></td><td>1600</td><td>800</td></tr>
+      <tr><td>Maoutai</td><td><span class="hover-image" data-img="assets/Moutai_icon.webp">Moutai - 50y</span></td><td>2500</td><td>1250</td></tr>
+      <tr><td>BLPhone</td><td><span class="hover-image" data-img="assets/BLPhone_inspect.webp">Black Luxury Phone</span></td><td>1200</td><td>600</td></tr>
+      <tr><td>EnHDD</td><td><span class="hover-image" data-img="assets/EnHDD_icon.webp">Encrypted Hard Disk Drive</span></td><td>1200</td><td>600</td></tr>
+      <tr><td>GCCard</td><td><span class="hover-image" data-img="assets/Gold_credit_card.webp">Gold Credit Card</span></td><td>800</td><td>400</td></tr>
+      <tr><td>SPendant</td><td><span class="hover-image" data-img="assets/Sapphire_Pendant.webp">Sapphire Pendant</span></td><td>750</td><td>375</td></tr>
+      <tr><td>ENecklace</td><td><span class="hover-image" data-img="assets/Emerald_Necklace.webp">Emerald Necklace</span></td><td>720</td><td>360</td></tr>
+      <tr><td>DCRing</td><td><span class="hover-image" data-img="assets/Diamond-Coral_Ring.webp">Diamond-Coral Ring</span></td><td>708</td><td>354</td></tr>
+      <tr><td>DAEarrings</td><td><span class="hover-image" data-img="assets/DAEarrings_icon.webp">Diamond Earrings</span></td><td>*690</td><td>*345</td></tr>
+      <tr><td>ERing</td><td><span class="hover-image" data-img="assets/Elaborate_ring.webp">Elaborate Ring</span></td><td>*672</td><td>336</td></tr>
+      <tr><td>PPEarrings</td><td><span class="hover-image" data-img="assets/Perfect_Pearl_Earrings.webp">Perfect Pearl Earrings</span></td><td>660</td><td>330</td></tr>
+      <tr><td>Allanach</td><td><span class="hover-image" data-img="assets/AllanchScotch.webp">Allanach Single Malt Scotch - 40y</span></td><td>1250</td><td>625</td></tr>
+      <tr><td>LPhone</td><td><span class="hover-image" data-img="assets/LPhone_inspect.webp">Luxury Smartphone</span></td><td>600</td><td>300</td></tr>
+      <tr><td>LWatch</td><td><span class="hover-image" data-img="assets/Luxury_smartwatch.webp">Luxury Smartwatch</span></td><td>*600</td><td>300</td></tr>
+      <tr><td>Breda</td><td><span class="hover-image" data-img="assets/Breda_rum_-_30Y.webp">Breda Rum - 30y</span></td><td>*2000</td><td>*1000</td></tr>
+      <tr><td>Intel</td><td><span class="hover-image" data-img="assets/Army_Intel.webp">Army Intel</span></td><td>*1280</td><td>320</td></tr>
+      <tr><td>DSLR</td><td><span class="hover-image" data-img="assets/Reflex_Camera.webp">Reflex Camera</span></td><td>*1280</td><td>*640</td></tr>
+      <tr><td>Tzintzimitl</td><td><span class="hover-image" data-img="assets/Tzintzimitl_tequila_-_25Y.webp">Tzintzimitl Tequila - 25y</span></td><td>528</td><td>264</td></tr>
+      <tr><td>Goodlad</td><td><span class="hover-image" data-img="assets/Goodlad_icon.webp">Goodlad Whisky - 20y</span></td><td>480</td><td>240</td></tr>
+      <tr><td>CCCard</td><td><span class="hover-image" data-img="assets/Common_credit_card.webp">Common Credit Card</span></td><td>*200</td><td>100</td></tr>
+      <tr><td>ReLaptop</td><td><span class="hover-image" data-img="assets/Reinforced_military_laptop.webp">Reinforced Military Laptop</span></td><td>768</td><td>384</td></tr>
+      <tr><td>DNecklace</td><td><span class="hover-image" data-img="assets/Dark_pearl_necklace.webp">Dark Pearl Necklace</span></td><td>188</td><td>94</td></tr>
+      <tr><td>GRing</td><td><span class="hover-image" data-img="assets/Gemstone_Ring.webp">Gemstone Ring</span></td><td>173</td><td>86</td></tr>
+      <tr><td>Necklace</td><td><span class="hover-image" data-img="assets/Gold_Necklace.webp">Gold Necklace</span></td><td>165</td><td>82</td></tr>
+      <tr><td>Ring</td><td><span class="hover-image" data-img="assets/Gold_Ring.webp">Gold Ring</span></td><td>158</td><td>79</td></tr>
+      <tr><td>SPhone</td><td><span class="hover-image" data-img="assets/Smartphone.webp">Smartphone</span></td><td>158</td><td>79</td></tr>
+      <tr><td>EPhone</td><td><span class="hover-image" data-img="assets/Expensive_Smartphone.webp">Expensive Smartphone</span></td><td>*150</td><td>*75</td></tr>
+      <tr><td>MWatch</td><td><span class="hover-image" data-img="assets/Modern_Watch.webp">Modern Watch</span></td><td>*150</td><td>*75</td></tr>
+      <tr><td>DigiCam</td><td><span class="hover-image" data-img="assets/DigitalCamera.webp">Digital Camera</span></td><td>140</td><td>*70</td></tr>
+      <tr><td>Intel</td><td><span class="hover-image" data-img="assets/Crime-related_intel.webp">Crime-related Intel</span></td><td>140</td><td>640</td></tr>
+      <tr><td>SWine</td><td><span class="hover-image" data-img="assets/Snake_Wine.webp">Snake Wine</span></td><td>*240</td><td>120</td></tr>
+      <tr><td>Laptop</td><td><span class="hover-image" data-img="assets/Laptop_icon.webp">Laptop</span></td><td>168</td><td>84</td></tr>
+      <tr><td>DogTag</td><td><span class="hover-image" data-img="assets/LAF_Dog_Tag_inspect.webp">LAF Dog Tag</span></td><td>6</td><td>3</td></tr>
     </tbody>
   </table>
 </section>
+
+<div id="hover-preview">
+  <img src="" alt="Preview" />
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const previewBox = document.getElementById('hover-preview');
+    const previewImg = previewBox.querySelector('img');
+
+    document.querySelectorAll('.hover-image').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        const imgSrc = el.getAttribute('data-img');
+        previewImg.src = imgSrc;
+        previewBox.style.display = 'block';
+      });
+
+      el.addEventListener('mousemove', (e) => {
+        previewBox.style.left = e.pageX + 20 + 'px';
+        previewBox.style.top = e.pageY + 20 + 'px';
+      });
+
+      el.addEventListener('mouseleave', () => {
+        previewBox.style.display = 'none';
+      });
+    });
+  });
+</script>
 
 
         <p>&copy; 2025 WhereIsVulture.com</p>
@@ -158,6 +187,26 @@ estReset.setUTCHours(15, 0, 0, 0);
   });
 </script>
 <script src="script.js"></script>
+<div id="hover-preview">
+  <img src="" alt="Preview" />
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const table = document.querySelector(".vulture-loot-table tbody");
+
+    const rows = Array.from(table.querySelectorAll("tr"));
+
+    // Sort rows based on the "Vulture Pays" column (4th column, index 3)
+    rows.sort((a, b) => {
+      const aValue = parseInt(a.children[3].textContent.replace(/\D/g, '')) || 0;
+      const bValue = parseInt(b.children[3].textContent.replace(/\D/g, '')) || 0;
+      return bValue - aValue;
+    });
+
+    // Reattach sorted rows
+    rows.forEach(row => table.appendChild(row));
+  });
+</script>
 
 </body>
 </html>

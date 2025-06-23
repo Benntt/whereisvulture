@@ -157,3 +157,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const previewBox = document.getElementById('hover-preview');
+  const previewImg = previewBox.querySelector('img');
+
+  document.querySelectorAll('.hover-image').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      const imgSrc = el.getAttribute('data-img');
+      previewImg.src = imgSrc;
+      previewBox.style.display = 'block';
+    });
+
+    el.addEventListener('mousemove', (e) => {
+      previewBox.style.left = e.pageX + 20 + 'px';
+      previewBox.style.top = e.pageY + 20 + 'px';
+    });
+
+    el.addEventListener('mouseleave', () => {
+      previewBox.style.display = 'none';
+    });
+  });
+});
