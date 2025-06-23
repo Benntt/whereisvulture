@@ -1,14 +1,14 @@
-function getNextMonday5AM() {
+function getNextMondayReset() {
   const now = new Date();
   const result = new Date(now);
   result.setUTCDate(now.getUTCDate() + ((1 + 7 - now.getUTCDay()) % 7 || 7));
-  result.setUTCHours(9, 0, 0, 0);
+  result.setUTCHours(15, 0, 0, 0); // 15:00 UTC = 3:00 PM UTC
   return result;
 }
 
 function updateCountdown() {
   const countdownElement = document.getElementById('countdown-timer');
-  const targetTime = getNextMonday5AM();
+  const targetTime = getNextMondayReset();
 
   const interval = setInterval(() => {
     const now = new Date();
