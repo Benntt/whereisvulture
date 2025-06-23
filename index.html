@@ -45,7 +45,8 @@
       <main>
         <section class="countdown-section">
           <p class="subtitle">
- ⚠️ We are still researching the exact time Vulture resets. We thought that it happens every Monday at <span id="local-reset-time">5:00 AM EST</span>, but this is not confirmed.
+ ⚠️ VULTURE RESETS EVERY MONDAY AT <span id="local-reset-time">3:00 PM UTC</span> — LOCAL TIME:
+
 </p>
 <div id="countdown-timer" class="countdown">Loading...</div>
 			<div class="cop-card-wrapper">
@@ -105,8 +106,9 @@
   function getLocalResetTime() {
     const estReset = new Date();
 
-    // Set to next Monday at 5:00 AM EST (which is 10:00 UTC)
-    estReset.setUTCHours(10, 0, 0, 0); // 5 AM EST = 10 AM UTC
+    // Set to next Monday at 3:00 PM UTC
+estReset.setUTCHours(15, 0, 0, 0);
+
     const day = estReset.getUTCDay();
     const diff = (1 + 7 - day) % 7 || 7;
     estReset.setUTCDate(estReset.getUTCDate() + diff);
