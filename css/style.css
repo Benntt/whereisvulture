@@ -732,3 +732,28 @@ body, h1, h2, h3, h4, h5, h6, p, a, li, button, .countdown, .cop-title, .cop-gri
   z-index: 5;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
+.vulture-loot-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1rem;
+  background-color: #111;
+  color: #f0f0f0;
+}
+
+.vulture-loot-table th,
+.vulture-loot-table td {
+  border: 1px solid #444;
+  padding: 10px;
+  text-align: center;
+}
+
+.vulture-loot-table thead {
+  background-color: #222;
+  color: #FFA500;
+}
+
+.vulture-loot-table tr:nth-child(even) {
+  background-color: #1a1a1a;
+}
