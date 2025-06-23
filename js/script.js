@@ -82,13 +82,15 @@ async function loadCopLocations() {
 
 
 const copOptions = [
-  { name: "Crusader", grid: "137:151" },
+  { name: "Stalwart", grid: "155:160" },
+  { name: "Westmore", grid: "168:161" },
   { name: "Nomad", grid: "189:157" },
-  { name: "Fort Narith", grid: "145:162" },
-  { name: "Pha Lang Airfield", grid: "181:139" },
-  { name: "Tiger Bay", grid: "123:166" },
-  { name: "YBL-1", grid: "176:176" },
-  { name: "YBL-2", grid: "173:152" }
+  { name: "Winchester", grid: "201:148" },
+  { name: "Harrison", grid: "197:125" },
+  { name: "Spielberk", grid: "182:122" },
+  { name: "Crusader", grid: "137:151" },
+  { name: "Titan", grid: "153:121" },
+  { name: "Bronco", grid: "124:135" }
 ];
 
 function populateDropdown(id) {
