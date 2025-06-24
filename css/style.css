@@ -2141,3 +2141,16 @@ body, h1, h2, h3, h4, h5, h6, p, a, li, button, .countdown, .cop-title, .cop-gri
     z-index: 999;
   }
 }
+@media (max-width: 768px) {
+  .nav-links,
+  .social-icons {
+    max-height: 80vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+  .nav-links,
+  .social-icons {
+    scroll-behavior: smooth;
+    padding-bottom: 1rem;
+  }
