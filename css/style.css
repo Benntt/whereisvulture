@@ -1875,3 +1875,19 @@ body, h1, h2, h3, h4, h5, h6, p, a, li, button, .countdown, .cop-title, .cop-gri
   }
 
 }
+.tracker-button {
+  background-color: #ffc800;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 0px;
+  padding: 15px 30px;
+  display: inline-block;
+  margin: 10px;
+  transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.tracker-button:hover {
+  background-color: #ffdb4d;
+  transform: scale(1.03);
+}
