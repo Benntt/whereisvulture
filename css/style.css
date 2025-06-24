@@ -10,6 +10,11 @@ body {
   padding: 0;
   font-family: 'Roboto Condensed', sans-serif;
 }
+body, html {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
 
 html {
   font-size: 16px;
@@ -378,12 +383,12 @@ section, main {
   background-color: #111;
   border-bottom: 2px solid #ffc800;
   display: flex;
-  justify-content: center;
-  gap: 2rem;
-  padding: 1rem 0;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-
 }
+
 
 .top-nav a {
   color: #ffc800;
@@ -446,7 +451,7 @@ section, main {
   border-bottom: 2px solid #ffc800;
   position: relative;
   top: 0;
-  margin-top: 10px; /* corrected spacing */
+ 
 }
 
 .top-nav a {
