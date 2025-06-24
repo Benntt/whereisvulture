@@ -1802,11 +1802,12 @@ body, h1, h2, h3, h4, h5, h6, p, a, li, button, .countdown, .cop-title, .cop-gri
 /* -------------------------- */
 /* 📱 Mobile Styles (Responsive) */
 /* -------------------------- */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
+
   body {
-    background: red; /* test background change */
+    padding: 1rem;
+    font-size: 14px;
   }
-}
 
   .top-nav {
     flex-direction: column;
@@ -1874,4 +1875,3 @@ body, h1, h2, h3, h4, h5, h6, p, a, li, button, .countdown, .cop-title, .cop-gri
   }
 
 }
-
