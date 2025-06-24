@@ -1793,17 +1793,10 @@ body, h1, h2, h3, h4, h5, h6, p, a, li, button, .countdown, .cop-title, .cop-gri
 }
 
 .vendor-video {
-  max-width: 100%;
+  width: 100%;
+  max-width: 600px;
   height: auto;
-  width: 600px; /* You can adjust this to whatever looks best */
-  border-radius: 8px; /* Optional: adds rounded corners */
+  border-radius: 8px;
+  object-fit: contain;
 }
-
-.vendor-video {
-  height: 300px;
-  width: auto;
-  max-width: 100%;
-  object-fit: cover;
-}
-
 
