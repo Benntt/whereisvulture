@@ -304,18 +304,10 @@ async function loadCopLocations() {
     const data = await response.json();
 
     // Update the basic location list
-    const copList = document.getElementById('cop-locations');
-    if (copList) {
-      copList.innerHTML = '';
-      if (data.cop1) {
-        const li1 = document.createElement('li');
-        li1.textContent = `â€¢ ${data.cop1}`;
-        copList.appendChild(li1);
-      }
-      if (data.cop2) {
-        const li2 = document.createElement('li');
-        li2.textContent = `â€¢ ${data.cop2}`;
-        copList.appendChild(li2);
+   const bullet = '\u2022'; // Unicode bullet character
+li1.textContent = `${bullet} ${data.cop1}`;
+li2.textContent = `${bullet} ${data.cop2}`;
+
       }
     }
 
