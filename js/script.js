@@ -106,12 +106,12 @@ async function loadCopLocations() {
       copList.innerHTML = '';
       if (data.cop1) {
         const li1 = document.createElement('li');
-        li1.textContent = `� ${data.cop1}`;
+        li1.textContent = `• ${data.cop1}`;
         copList.appendChild(li1);
       }
       if (data.cop2) {
         const li2 = document.createElement('li');
-        li2.textContent = `� ${data.cop2}`;
+        li2.textContent = `• ${data.cop2}`;
         copList.appendChild(li2);
       }
     }
@@ -250,21 +250,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
   isLiveBasedOnSchedule(false); // Set to false for real-time logic
 });
-function getNextMonday5AM() {
+
+
+function getNextMonday3PMUTC() {
   const now = new Date();
-  const result = new Date(now);
-  result.setUTCDate(now.getUTCDate() + ((1 + 7 - now.getUTCDay()) % 7 || 7));
-  result.setUTCHours(9, 0, 0, 0);
-  return result;
+  const target = new Date(Date.UTC(
+    now.getUTCFullYear(),
+    now.getUTCMonth(),
+    now.getUTCDate(),
+    15, 0, 0, 0 // 3:00 PM UTC
+  ));
+
+  const currentDay = now.getUTCDay();
+  const isBeforeTargetToday = currentDay === 1 && now < target;
+
+  if (isBeforeTargetToday) return target;
+
+  const daysUntilMonday = (8 - currentDay) % 7 || 7;
+  target.setUTCDate(target.getUTCDate() + daysUntilMonday);
+  return target;
 }
 
 function updateCountdown() {
   const countdownElement = document.getElementById('countdown-timer');
-  const targetTime = getNextMonday5AM();
+  if (!countdownElement) return;
+
+  const targetTime = getNextMonday3PMUTC();
 
   const interval = setInterval(() => {
     const now = new Date();
-    const diff = targetTime - now;
+    const diff = targetTime.getTime() - now.getTime();
 
     if (diff <= 0) {
       countdownElement.textContent = "RESET!";
@@ -272,13 +287,16 @@ function updateCountdown() {
       return;
     }
 
-    const hours = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
-    const minutes = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0');
-    const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+    const totalSeconds = Math.floor(diff / 1000);
+    const days = Math.floor(totalSeconds / (60 * 60 * 24));
+    const hours = Math.floor((totalSeconds / (60 * 60)) % 24);
+    const minutes = Math.floor((totalSeconds / 60) % 60);
+    const seconds = totalSeconds % 60;
 
-    countdownElement.textContent = `${hours}:${minutes}:${seconds}`;
+    countdownElement.textContent = `${days}d ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
   }, 1000);
 }
+
 
 async function loadCopLocations() {
   try {
@@ -291,17 +309,17 @@ async function loadCopLocations() {
       copList.innerHTML = '';
       if (data.cop1) {
         const li1 = document.createElement('li');
-        li1.textContent = `• ${data.cop1}`;
+        li1.textContent = `â€¢ ${data.cop1}`;
         copList.appendChild(li1);
       }
       if (data.cop2) {
         const li2 = document.createElement('li');
-        li2.textContent = `• ${data.cop2}`;
+        li2.textContent = `â€¢ ${data.cop2}`;
         copList.appendChild(li2);
       }
     }
 
-    // 🔥 Now dynamically update the cop cards
+    // ðŸ”¥ Now dynamically update the cop cards
     const cardWrapper = document.querySelector('.cop-card-wrapper');
     if (cardWrapper) {
       cardWrapper.innerHTML = '';
