@@ -9,7 +9,11 @@ function getNextMonday3PMUTC() {
   ));
 
   const currentDay = now.getUTCDay();
-  const isBeforeTargetToday = currentDay === 1 && now < target;
+  const isMonday = currentDay === 1;
+const after3PM = now.getUTCHours() >= 15;
+
+if (isMonday && !after3PM) return target;
+
 
   if (isBeforeTargetToday) return target;
 
@@ -188,7 +192,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   document.querySelectorAll('.redacted-hover').forEach(link => {
-    const target = link.querySelector('.link-text') || link;
+    let target = link.querySelector('.link-text');
+if (!target) target = link;
+
     let originalText = target.getAttribute('data-original');
     if (!originalText) {
       originalText = target.textContent.trim();
