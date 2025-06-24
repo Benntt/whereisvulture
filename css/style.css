@@ -1785,6 +1785,25 @@ body, h1, h2, h3, h4, h5, h6, p, a, li, button, .countdown, .cop-title, .cop-gri
   90% { transform: translate(-1px, 1px) scale(1.02); opacity: 0.95; }
   100% { transform: translate(0, 0) scale(1); opacity: 1; }
 }
+.vendor-gif {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
 
+.vendor-video {
+  max-width: 100%;
+  height: auto;
+  width: 600px; /* You can adjust this to whatever looks best */
+  border-radius: 8px; /* Optional: adds rounded corners */
+}
+
+.vendor-video {
+  height: 300px;
+  width: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
 
 
