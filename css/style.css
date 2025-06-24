@@ -1983,3 +1983,10 @@ body, h1, h2, h3, h4, h5, h6, p, a, li, button, .countdown, .cop-title, .cop-gri
   }
 
 }
+.external-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
