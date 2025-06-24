@@ -223,23 +223,3 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-<script>
-  function getLocalResetTimeFooter() {
-    const estReset = new Date();
-    estReset.setUTCHours(15, 0, 0, 0); // 3:00 PM UTC
-    const day = estReset.getUTCDay();
-    const diff = (1 + 7 - day) % 7 || 7;
-    estReset.setUTCDate(estReset.getUTCDate() + diff);
-
-    const localTime = estReset.toLocaleTimeString([], {
-      hour: 'numeric',
-      minute: '2-digit',
-      timeZoneName: 'short'
-    });
-
-    const localSpan = document.getElementById('local-reset-time-footer');
-    if (localSpan) localSpan.textContent = localTime.toUpperCase();
-  }
-
-  document.addEventListener('DOMContentLoaded', getLocalResetTimeFooter);
-</script>
