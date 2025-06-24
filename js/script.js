@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   let decoding = false;
-  link.addEventListener('mouseenter', () => {
+    link.addEventListener('mouseenter', () => {
     if (decoding) return;
     decoding = true;
     let iterations = 0;
@@ -223,3 +223,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+});
