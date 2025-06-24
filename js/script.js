@@ -1,26 +1,27 @@
 
 function getNextMonday3PMUTC() {
   const now = new Date();
-  const target = new Date(Date.UTC(
+  const currentDay = now.getUTCDay();
+  const currentTime = now.getTime();
+
+  const today3PMUTC = new Date(Date.UTC(
     now.getUTCFullYear(),
     now.getUTCMonth(),
     now.getUTCDate(),
-    15, 0, 0, 0 // 3:00 PM UTC
+    15, 0, 0, 0
   ));
 
-  const currentDay = now.getUTCDay();
-  const isMonday = currentDay === 1;
-const after3PM = now.getUTCHours() >= 15;
+  // If it's Monday and BEFORE 3PM UTC, return today at 3PM
+  if (currentDay === 1 && currentTime < today3PMUTC.getTime()) {
+    return today3PMUTC;
+  }
 
-if (isMonday && !after3PM) return target;
-
-
-  if (isBeforeTargetToday) return target;
-
-  const daysUntilMonday = (8 - currentDay) % 7 || 7;
-  target.setUTCDate(target.getUTCDate() + daysUntilMonday);
-  return target;
+  // Else, find the NEXT Monday at 3PM
+  const daysUntilNextMonday = (8 - currentDay) % 7 || 7;
+  today3PMUTC.setUTCDate(today3PMUTC.getUTCDate() + daysUntilNextMonday);
+  return today3PMUTC;
 }
+
 
 function updateCountdown() {
   const countdownElement = document.getElementById('countdown-timer');
@@ -192,36 +193,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   document.querySelectorAll('.redacted-hover').forEach(link => {
-    let target = link.querySelector('.link-text');
-if (!target) target = link;
+  let target = link.querySelector('.link-text') || link;
 
-    let originalText = target.getAttribute('data-original');
-    if (!originalText) {
-      originalText = target.textContent.trim();
-      target.setAttribute('data-original', originalText);
-    }
-    let decoding = false;
-    link.addEventListener('mouseenter', () => {
-      if (decoding) return;
-      decoding = true;
-      let iterations = 0;
-      const interval = setInterval(() => {
-        const scrambled = originalText.split("").map((char, i) => {
-          if (char === " ") return " ";
-          if (i < iterations) return originalText[i];
-          return letters[Math.floor(Math.random() * letters.length)];
-        }).join("");
-        target.textContent = scrambled;
-        iterations += 1 / 3;
-        if (iterations >= originalText.length) {
-          clearInterval(interval);
-          target.textContent = originalText;
-          decoding = false;
-        }
-      }, 30);
-    });
+  let originalText = target.getAttribute('data-original');
+  if (!originalText) {
+    originalText = target.textContent.trim();
+    target.setAttribute('data-original', originalText);
+  }
+
+  let decoding = false;
+  link.addEventListener('mouseenter', () => {
+    if (decoding) return;
+    decoding = true;
+    let iterations = 0;
+    const interval = setInterval(() => {
+      const scrambled = originalText.split("").map((char, i) => {
+        if (char === " ") return " ";
+        if (i < iterations) return originalText[i];
+        return letters[Math.floor(Math.random() * letters.length)];
+      }).join("");
+      target.textContent = scrambled;
+      iterations += 1 / 3;
+      if (iterations >= originalText.length) {
+        clearInterval(interval);
+        target.textContent = originalText;
+        decoding = false;
+      }
+    }, 30);
   });
 });
+
 <script>
   function getLocalResetTimeFooter() {
     const estReset = new Date();
