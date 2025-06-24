@@ -1891,3 +1891,33 @@ body, h1, h2, h3, h4, h5, h6, p, a, li, button, .countdown, .cop-title, .cop-gri
   background-color: #ffdb4d;
   transform: scale(1.03);
 }
+@media (max-width: 768px) {
+  .top-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 0;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 0.5rem 0;
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .stream-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .live-dot {
+    margin: 0;
+    width: 8px;
+    height: 8px;
+  }
+}
