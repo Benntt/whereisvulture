@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Birthday Dog Spotting Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #fff8f0;
+      color: #333;
+      padding: 20px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #e67e22;
+    }
+
+    p {
+      text-align: center;
+      font-size: 1.1em;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #fefefe;
+      border: 2px solid #e67e22;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      padding: 12px 16px;
+      font-size: 1.1em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.4);
+    }
+
+    #addDogForm {
+      display: flex;
+      margin-top: 20px;
+      gap: 10px;
+    }
+
+    #newDogInput {
+      flex: 1;
+      padding: 10px;
+      font-size: 1em;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #addDogBtn {
+      padding: 10px 15px;
+      font-size: 1em;
+      background-color: #e67e22;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #addDogBtn:hover {
+      background-color: #d35400;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dog Spotting Guide 🐾</h1>
+  <p>Check off dogs as you see them during the birthday crawl!</p>
+
+  <ul id="dogList"></ul>
+
+  <form id="addDogForm">
+    <input type="text" id="newDogInput" placeholder="Add a custom dog (e.g. Shiba Inu)" required>
+    <button type="submit" id="addDogBtn">Add</button>
+  </form>
+
+  <script>
+    const defaultDogs = [
+      'Corgi',
+      'Golden Retriever',
+      'Bulldog',
+      'Husky',
+      'Chihuahua',
+      'Poodle/Doodle',
+      'German Shepherd',
+      'Dachshund',
+      'French Bulldog',
+      'Mystery Mutt',
+      'Pomeranian',
+      'Shih Tzu',
+      'Boxer',
+      'Labrador',
+      'Great Dane',
+      'Beagle',
+      'Doberman',
+      'Pitbull',
+      'Australian Shepherd',
+      'Maltese'
+    ];
+
+    const STORAGE_KEY = 'dogSpottingData';
+    const dogListEl = document.getElementById('dogList');
+    const addDogForm = document.getElementById('addDogForm');
+    const newDogInput = document.getElementById('newDogInput');
+
+    let dogData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+
+    // Populate list from default + saved
+    function populateList() {
+      dogListEl.innerHTML = '';
+      const allDogs = [...new Set([...defaultDogs, ...Object.keys(dogData)])];
+
+      allDogs.forEach(dog => {
+        const id = dog.toLowerCase().replace(/\s+/g, '-');
+        const isChecked = dogData[dog] || false;
+
+        const li = document.createElement('li');
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.dataset.id = dog;
+        checkbox.checked = isChecked;
+
+        checkbox.addEventListener('change', () => {
+          dogData[dog] = checkbox.checked;
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(dogData));
+        });
+
+        const label = document.createElement('label');
+        label.textContent = dog;
+
+        li.appendChild(checkbox);
+        li.appendChild(label);
+        dogListEl.appendChild(li);
+      });
+    }
+
+    // Add new dog
+    addDogForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const newDog = newDogInput.value.trim();
+      if (newDog && !dogData.hasOwnProperty(newDog)) {
+        dogData[newDog] = false;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(dogData));
+        newDogInput.value = '';
+        populateList();
+      }
+    });
+
+    // Initialize
+    populateList();
+  </script>
+</body>
+</html>
