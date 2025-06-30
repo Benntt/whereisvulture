@@ -1,33 +1,32 @@
 
-function getNextMonday3PMUTC() {
+function getNextMonday12PMUTC() {
   const now = new Date();
   const currentDay = now.getUTCDay();
   const currentTime = now.getTime();
 
-  const today3PMUTC = new Date(Date.UTC(
+  const today12PMUTC = new Date(Date.UTC(
     now.getUTCFullYear(),
     now.getUTCMonth(),
     now.getUTCDate(),
-    15, 0, 0, 0
+    12, 0, 0, 0
   ));
 
-  // If it's Monday and BEFORE 3PM UTC, return today at 3PM
-  if (currentDay === 1 && currentTime < today3PMUTC.getTime()) {
-    return today3PMUTC;
+  // If it's Monday and before 12 PM UTC, return today at 12
+  if (currentDay === 1 && currentTime < today12PMUTC.getTime()) {
+    return today12PMUTC;
   }
 
-  // Else, find the NEXT Monday at 3PM
+  // Otherwise, return next Monday at 12
   const daysUntilNextMonday = (8 - currentDay) % 7 || 7;
-  today3PMUTC.setUTCDate(today3PMUTC.getUTCDate() + daysUntilNextMonday);
-  return today3PMUTC;
+  today12PMUTC.setUTCDate(today12PMUTC.getUTCDate() + daysUntilNextMonday);
+  return today12PMUTC;
 }
-
 
 function updateCountdown() {
   const countdownElement = document.getElementById('countdown-timer');
   if (!countdownElement) return;
 
-  const targetTime = getNextMonday3PMUTC();
+  const targetTime = getNextMonday12PMUTC(); // <- new function used
 
   const interval = setInterval(() => {
     const now = new Date();
