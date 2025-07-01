@@ -64,7 +64,7 @@
       <main>
         <section class="countdown-section">
           <p class="subtitle">
-            ⚠️ VULTURE RESETS EVERY MONDAY AT <span id="local-reset-time">12:00 PM UTC</span> — LOCAL TIME:
+            ⚠️ VULTURE RESETS EVERY MONDAY AT <span id="local-reset-time">12:00 PM UTC</span>
           </p>
           <div id="countdown-timer" class="countdown">Loading...</div>
 
@@ -117,25 +117,39 @@
 		
   <!-- Scripts -->
   <script src="js/script.js"></script>
-  <script>
-    function getLocalResetTime() {
-      const estReset = new Date();
-      estReset.setUTCHours(15, 0, 0, 0); // 12:00 PM UTC
-      const day = estReset.getUTCDay();
-      const diff = (1 + 7 - day) % 7 || 7;
-      estReset.setUTCDate(estReset.getUTCDate() + diff);
+<script>
+  function getLocalResetTime() {
+    const now = new Date();
 
-      const localTime = estReset.toLocaleTimeString([], {
-        hour: 'numeric',
-        minute: '2-digit',
-        timeZoneName: 'short'
-      });
+    // Create next Monday at 12:00 PM UTC
+    const nextMonday = new Date(now);
+    const day = now.getUTCDay();
+    const hour = now.getUTCHours();
 
-      const localSpan = document.getElementById('local-reset-time');
-      if (localSpan) localSpan.textContent = localTime.toUpperCase();
+    let daysUntilMonday = (1 + 7 - day) % 7;
+    // If it's already Monday and past 12:00 UTC, go to next week
+    if (day === 1 && hour >= 12) {
+      daysUntilMonday = 7;
+    } else if (day > 1) {
+      daysUntilMonday = (8 - day) % 7;
     }
-    document.addEventListener('DOMContentLoaded', getLocalResetTime);
-  </script>
+
+    nextMonday.setUTCDate(now.getUTCDate() + daysUntilMonday);
+    nextMonday.setUTCHours(12, 0, 0, 0); // Set to 12:00 PM UTC
+
+    const localTime = nextMonday.toLocaleTimeString([], {
+      hour: 'numeric',
+      minute: '2-digit',
+      timeZoneName: 'short'
+    });
+
+    const localSpan = document.getElementById('local-reset-time');
+    if (localSpan) localSpan.textContent = localTime.toUpperCase();
+  }
+
+  document.addEventListener('DOMContentLoaded', getLocalResetTime);
+</script>
+
 
   <!-- Support Banner -->
   <div class="support-banner" id="supportBanner">
