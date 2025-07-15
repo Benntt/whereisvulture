@@ -29,12 +29,36 @@ document.addEventListener("DOMContentLoaded", () => {
     cop2Select.appendChild(option2);
   });
 
-  // Button to generate and download JSON
+  // Show current JSON output
+  function renderLiveJson() {
+    liveJson.innerHTML = "";
+
+    const cop1 = cop1Select.value;
+    const cop2 = cop2Select.value;
+    const timestamp = new Date().toISOString();
+
+    const li1 = document.createElement("li");
+    li1.textContent = `cop1: ${cop1}`;
+    const li2 = document.createElement("li");
+    li2.textContent = `cop2: ${cop2}`;
+    const li3 = document.createElement("li");
+    li3.textContent = `timestamp: ${timestamp}`;
+
+    liveJson.appendChild(li1);
+    liveJson.appendChild(li2);
+    liveJson.appendChild(li3);
+  }
+
+  cop1Select.addEventListener("change", renderLiveJson);
+  cop2Select.addEventListener("change", renderLiveJson);
+
+  // Generate and download JSON with timestamp
   generateBtn.addEventListener("click", () => {
     const cop1 = cop1Select.value;
     const cop2 = cop2Select.value;
+    const timestamp = new Date().toISOString();
 
-    const vultureData = { cop1, cop2 };
+    const vultureData = { cop1, cop2, timestamp };
 
     const blob = new Blob([JSON.stringify(vultureData, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
@@ -48,17 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
     URL.revokeObjectURL(url);
   });
 
-  // Show current JSON output
-  function renderLiveJson() {
-    liveJson.innerHTML = "";
-    const li1 = document.createElement("li");
-    li1.textContent = `cop1: ${cop1Select.value}`;
-    const li2 = document.createElement("li");
-    li2.textContent = `cop2: ${cop2Select.value}`;
-    liveJson.appendChild(li1);
-    liveJson.appendChild(li2);
-  }
-
-  cop1Select.addEventListener("change", renderLiveJson);
-  cop2Select.addEventListener("change", renderLiveJson);
+  // Initial render
+  renderLiveJson();
 });
