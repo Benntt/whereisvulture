@@ -1,4 +1,3 @@
-
 function getNextMonday12PMUTC() {
   const now = new Date();
   const currentDay = now.getUTCDay();
@@ -11,12 +10,10 @@ function getNextMonday12PMUTC() {
     12, 0, 0, 0
   ));
 
-  // If it's Monday and before 12 PM UTC, return today at 12
   if (currentDay === 1 && currentTime < today12PMUTC.getTime()) {
     return today12PMUTC;
   }
 
-  // Otherwise, return next Monday at 12
   const daysUntilNextMonday = (8 - currentDay) % 7 || 7;
   today12PMUTC.setUTCDate(today12PMUTC.getUTCDate() + daysUntilNextMonday);
   return today12PMUTC;
@@ -26,7 +23,7 @@ function updateCountdown() {
   const countdownElement = document.getElementById('countdown-timer');
   if (!countdownElement) return;
 
-  const targetTime = getNextMonday12PMUTC(); // <- new function used
+  const targetTime = getNextMonday12PMUTC();
 
   const interval = setInterval(() => {
     const now = new Date();
@@ -35,6 +32,7 @@ function updateCountdown() {
     if (diff <= 0) {
       countdownElement.textContent = "RESET!";
       clearInterval(interval);
+      loadSearchingState();
       return;
     }
 
@@ -58,7 +56,7 @@ function updateCustomCountdown() {
       now.getUTCFullYear(),
       now.getUTCMonth(),
       now.getUTCDate(),
-      18, 0, 0, 0 // 2PM EST = 18:00 UTC
+      18, 0, 0, 0
     ));
 
     const day = now.getUTCDay();
@@ -77,7 +75,7 @@ function updateCustomCountdown() {
     const now = new Date();
     const eventStart = getNextFriday2PMUTC();
     const eventEnd = new Date(eventStart);
-    eventEnd.setUTCHours(22, 0, 0, 0); // 6PM EST = 22:00 UTC
+    eventEnd.setUTCHours(22, 0, 0, 0);
 
     if (now >= eventStart && now < eventEnd) {
       el.textContent = "LIVE";
@@ -145,6 +143,43 @@ async function loadCopLocations() {
   }
 }
 
+async function loadSearchingState() {
+  try {
+    const response = await fetch('data/searching.json');
+    const data = await response.json();
+
+    const copList = document.getElementById('cop-locations');
+    if (copList) {
+      copList.innerHTML = '';
+      data.forEach(cop => {
+        const li = document.createElement('li');
+        li.textContent = `• ${cop.name} (Searching...)`;
+        copList.appendChild(li);
+      });
+    }
+
+    const wrapper = document.querySelector('.cop-card-wrapper');
+    if (wrapper) {
+      wrapper.innerHTML = '';
+      data.forEach(cop => {
+        const card = document.createElement('div');
+        card.className = 'cop-card';
+        if (cop.name.toUpperCase() === 'REDACTED') {
+          card.classList.add('searching-card');
+        }
+
+        card.innerHTML = `
+          <div class="cop-title">${cop.name}</div>
+          <img src="${cop.icon}" alt="${cop.name} Location">
+          <div class="cop-grid">${cop.grid}</div>`;
+        wrapper.appendChild(card);
+      });
+    }
+  } catch (err) {
+    console.error('Failed to load searching.json:', err);
+  }
+}
+
 function isLiveBasedOnSchedule(debug = false) {
   let isLive = true;
 
@@ -173,11 +208,34 @@ function isLiveBasedOnSchedule(debug = false) {
   }
 }
 
+// Final logic on page load
 document.addEventListener("DOMContentLoaded", () => {
-  updateCountdown();
   updateCustomCountdown();
-  loadCopLocations();
   isLiveBasedOnSchedule(false);
+
+  const now = new Date();
+  const resetTime = getNextMonday12PMUTC();
+
+  fetch('data/vulture-locations.json')
+    .then(res => res.json())
+    .then(data => {
+      const hasTimestamp = data.timestamp !== undefined;
+      const isFresh = hasTimestamp && new Date(data.timestamp) >= resetTime;
+      const hasData = data.cop1 && data.cop2;
+
+      if (now >= resetTime && (!hasData || !isFresh)) {
+        loadSearchingState(); // fallback mode after reset
+      } else {
+        loadCopLocations();   // show current CoP locations
+      }
+
+      // Always run the countdown for next reset
+      updateCountdown();
+    })
+    .catch(err => {
+      console.error("Failed to read vulture-locations.json:", err);
+      loadSearchingState();
+    });
 
   if (document.getElementById("cop1") && document.getElementById("cop2")) {
     populateDropdown("cop1");
@@ -192,34 +250,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   document.querySelectorAll('.redacted-hover').forEach(link => {
-  let target = link.querySelector('.link-text') || link;
+    let target = link.querySelector('.link-text') || link;
+    let originalText = target.getAttribute('data-original');
+    if (!originalText) {
+      originalText = target.textContent.trim();
+      target.setAttribute('data-original', originalText);
+    }
 
-  let originalText = target.getAttribute('data-original');
-  if (!originalText) {
-    originalText = target.textContent.trim();
-    target.setAttribute('data-original', originalText);
-  }
-
-  let decoding = false;
+    let decoding = false;
     link.addEventListener('mouseenter', () => {
-    if (decoding) return;
-    decoding = true;
-    let iterations = 0;
-    const interval = setInterval(() => {
-      const scrambled = originalText.split("").map((char, i) => {
-        if (char === " ") return " ";
-        if (i < iterations) return originalText[i];
-        return letters[Math.floor(Math.random() * letters.length)];
-      }).join("");
-      target.textContent = scrambled;
-      iterations += 1 / 3;
-      if (iterations >= originalText.length) {
-        clearInterval(interval);
-        target.textContent = originalText;
-        decoding = false;
-      }
-    }, 30);
+      if (decoding) return;
+      decoding = true;
+      let iterations = 0;
+      const interval = setInterval(() => {
+        const scrambled = originalText.split("").map((char, i) => {
+          if (char === " ") return " ";
+          if (i < iterations) return originalText[i];
+          return letters[Math.floor(Math.random() * letters.length)];
+        }).join("");
+        target.textContent = scrambled;
+        iterations += 1 / 3;
+        if (iterations >= originalText.length) {
+          clearInterval(interval);
+          target.textContent = originalText;
+          decoding = false;
+        }
+      }, 30);
+    });
   });
-});
-
 });

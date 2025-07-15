@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Where Is Vulture</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+</head>
+<body>
+  <div class="page-shell">
+    <nav class="top-nav redacted-menu">
+      <button class="hamburger" id="hamburger">&#9776;</button>
+      <div class="nav-inner">
+        <div class="nav-links" id="nav-links">
+          <a href="index.html" class="nav-link redacted-hover"><span class="link-text">HOME</span></a>
+          <a href="ranks.html" class="nav-link redacted-hover"><span class="link-text">RANKS</span></a>
+          <a href="loot.html" class="nav-link redacted-hover"><span class="link-text">HVL</span></a>
+          <a href="customs.html" class="nav-link redacted-hover"><span class="link-text">CUSTOM SERVERS</span></a>
+          <a href="who.html" class="nav-link redacted-hover"><span class="link-text">WHO IS VULTURE</span></a>
+          <a href="https://twitch.tv/damnitbennett" class="nav-link redacted-hover stream-label" id="stream-link">
+            <span id="live-indicator" class="live-dot"></span>
+            <span class="link-text">LIVE</span>
+          </a>
+        </div>
+        <div class="social-icons" id="social-icons">
+          <a href="https://twitch.tv/damnitbennett" target="_blank" class="social-link"><i class="fab fa-twitch"></i></a>
+          <a href="https://tiktok.com/@damnitbennett" target="_blank" class="social-link"><i class="fab fa-tiktok"></i></a>
+          <a href="https://twitter.com/damnitbennett" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="https://youtube.com/@damnitbennettLIVE" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
+          <a href="https://instagram.com/damnitbennett" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="https://discord.gg/damnitbennett" target="_blank" class="social-link"><i class="fab fa-discord"></i></a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="page-container">
+      <header>
+        <h1>
+          <span class="orange-text">WHERE</span>
+          <span class="white-text">IS</span>
+          <span class="orange-text">VULTURE</span>
+        </h1>
+        <div class="vendor-gif">
+          <video autoplay loop muted playsinline class="vendor-video">
+            <source src="assets/vendor.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </header>
+
+      <main>
+        <section class="countdown-section">
+          <p class="subtitle">⚠️ VULTURE RESETS EVERY MONDAY AT <span id="local-reset-time">12:00 PM UTC</span></p>
+          <div id="countdown-timer" class="countdown">Loading...</div>
+          <div class="cop-card-wrapper"></div>
+        </section>
+
+        <section class="location-section">
+          <p>Vulture is currently located at:</p>
+          <ul id="cop-locations"></ul>
+          <a href="#" class="tracker-button coming-soon" title="Coming soon" onclick="return false;">VIEW ON MAP</a>
+          <blockquote class="flavor-text">"Some call him a myth. We call him payday."</blockquote>
+        </section>
+      </main>
+
+      <footer>
+        <section class="seo-lore">
+          <div class="seo-content">
+            <h2>Who is Vulture?</h2>
+            <p>Vulture is a mythic black market vendor in <strong>Gray Zone Warfare.</strong> Scavenger, trader, and survivor. Each week, he relocates to two Major CoPs across Lamang, appearing <strong>every Monday at 3:00 PM UTC</strong> (<span id="local-reset-time-footer"></span>local time).</p>
+            <p>He collects gear from fallen players, restores it to <strong>95% durability</strong>, and sells it back, often at a price. Players can also trade <strong>HVL (High Value Loot)</strong> to increase their rank with him and unlock better gear.</p>
+            <p>Ex-military? Local rogue? No one knows for sure. But if you find him, your squad gets paid.</p>
+            <center>
+              <div class="external-buttons">
+                <a href="https://grayzonewarfare.com" target="_blank" rel="noopener" class="tracker-button">Official Website</a>
+                <a href="https://lurk.ly/jTFNfq" target="_blank" rel="noopener" class="tracker-button">Play on Steam</a>
+              </div>
+              <p>&copy; 2025 WhereIsVulture.com</p>
+            </center>
+          </div>
+        </section>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ✅ Scripts -->
+  <script src="js/script.js"></script>
+  <script>
+    window.onload = () => {
+      if (typeof loadSearchingState === 'function') {
+        loadSearchingState();
+      } else {
+        console.error("loadSearchingState is not defined.");
+      }
+    };
+  </script>
+
+  <!-- Optional: support banner + hamburger menu scripts can go here -->
+</body>
+</html>
