@@ -641,12 +641,6 @@ body, h1, h2, h3, h4, h5, h6, p, a, li, button, .countdown, .cop-title, .cop-gri
   background: #f2f2f2;
   transform: scale(1.05);
 }
-
-@media (max-width: 500px) {
-  .support-banner {
-    display: none;
-  }
-}
 /* Support Banner - Fade In */
 .support-banner {
   opacity: 0;
