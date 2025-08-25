@@ -1,5 +1,8 @@
-{
-  "cop1": "WESTMORE (Grid 168:161)",
-  "cop2": "TITAN (Grid 153:121)",
-  "timestamp": "2025-08-18T12:20:06.126Z"
-}
+[
+  {
+    "name": "REDACTED",
+    "grid": "RECALIBRATING",
+    "status": "Searching...",
+    "icon": "assets/searching-single.webp"
+  }
+]
