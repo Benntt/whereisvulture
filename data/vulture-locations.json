@@ -1,8 +1,5 @@
-[
-  {
-    "name": "REDACTED",
-    "grid": "RECALIBRATING",
-    "status": "Searching...",
-    "icon": "assets/searching-single.webp"
-  }
-]
+{
+  "cop1": "NOMAD (Grid 189:157)",
+  "cop2": "TITAN (Grid 153:121)",
+  "timestamp": "2025-08-25T12:45:50.264Z"
+}
