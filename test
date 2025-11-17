@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Where Is Vulture</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2821B6XCY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y2821B6XCY');
+  </script>
+</head>
+<body>
+  <div class="page-shell">
+
+    <!-- ✅ New Full-width Top Navigation -->
+   <nav class="top-nav redacted-menu">
+  <button class="hamburger" id="hamburger">&#9776;</button>
+  <div class="nav-inner">
+    <div class="nav-links" id="nav-links">
+      <a href="index.html" class="nav-link redacted-hover"><span class="link-text">HOME</span></a>
+      <a href="ranks.html" class="nav-link redacted-hover"><span class="link-text">RANKS</span></a>
+      <a href="loot.html" class="nav-link redacted-hover"><span class="link-text">HVL</span></a>
+      <a href="customs.html" class="nav-link redacted-hover"><span class="link-text">CUSTOM SERVERS</span></a>
+      <a href="who.html" class="nav-link redacted-hover"><span class="link-text">WHO IS VULTURE</span></a>
+      <a href="https://twitch.tv/damnitbennett" class="nav-link redacted-hover stream-label" id="stream-link">
+        <span id="live-indicator" class="live-dot"></span>
+        <span class="link-text">LIVE</span>
+      </a>
+    </div>
+    <div class="social-icons" id="social-icons">
+      <a href="https://twitch.tv/damnitbennett" target="_blank" class="social-link"><i class="fab fa-twitch"></i></a>
+      <a href="https://tiktok.com/@damnitbennett" target="_blank" class="social-link"><i class="fab fa-tiktok"></i></a>
+      <a href="https://twitter.com/damnitbennett" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+      <a href="https://youtube.com/@damnitbennettLIVE" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
+      <a href="https://instagram.com/damnitbennett" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+      <a href="https://discord.gg/damnitbennett" target="_blank" class="social-link"><i class="fab fa-discord"></i></a>
+    </div>
+  </div>
+</nav>
+
+    <!-- Page Content -->
+    <div class="page-container">
+      <header>
+        <h1>
+          <span class="orange-text">WHERE</span> 
+          <span class="white-text">IS</span> 
+          <span class="orange-text">VULTURE</span>
+        </h1>
+        <div class="vendor-gif">
+  <video autoplay loop muted playsinline class="vendor-video">
+    <source src="assets/vendor.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+      <main>
+        <section class="countdown-section">
+          <p class="subtitle">
+            ⚠️ VULTURE RESETS EVERY MONDAY AT <span id="local-reset-time">12:00 PM UTC</span>
+          </p>
+          <div id="countdown-timer" class="countdown">Loading...</div>
+
+          <div class="cop-card-wrapper"></div>
+
+        </section>
+
+        <section class="location-section">
+          <p>Vulture is currently located at:</p>
+          <ul id="cop-locations"></ul>
+          <a href="#" class="tracker-button coming-soon" title="Coming soon" onclick="return false;">VIEW ON MAP</a>
+          <blockquote class="flavor-text">"Some call him a myth. We call him payday."</blockquote>
+        </section>
+      </main>
+
+      <footer>
+        <section class="seo-lore">
+          <div class="seo-content">
+            <h2>Who is Vulture?</h2>
+<p>
+  Vulture is a mythic black market vendor in <strong>Gray Zone Warfare.</strong> Scavenger, trader, and survivor. Each week, he relocates to two Major CoPs across Lamang, appearing <strong>every Monday at 3:00 PM UTC</strong> (<span id="local-reset-time-footer"></span>local time).
+</p>
+<p>
+  He collects gear from fallen players, restores it to <strong>95% durability</strong>, and sells it back, often at a price. Players can also trade <strong>HVL (High Value Loot)</strong> to increase their rank with him and unlock better gear.
+</p>
+<p>
+  Ex-military? Local rogue? No one knows for sure. But if you find him, your squad gets paid.
+</p>
+<center>
+      <div class="external-buttons">
+  <a href="https://grayzonewarfare.com" target="_blank" rel="noopener" class="tracker-button">Official Website</a>
+  <a href="https://lurk.ly/jTFNfq" target="_blank" rel="noopener" class="tracker-button">Play on Steam</a>
+</div>
+			 
+
+        <p>&copy; 2025 WhereIsVulture.com</p> </center>
+         <div class="mt-1">
+    This is a fan-made website and is not affiliated with or endorsed by <strong>Gray Zone Warfare</strong> or <strong>Madfinger Games</strong>.
+  </div>
+      </footer>
+    </div>
+  </div>
+		
+  <!-- Scripts -->
+  <script src="js/script.js"></script>
+<script>
+  function getLocalResetTime() {
+    const now = new Date();
+
+    // Create next Monday at 12:00 PM UTC
+    const nextMonday = new Date(now);
+    const day = now.getUTCDay();
+    const hour = now.getUTCHours();
+
+    let daysUntilMonday = (1 + 7 - day) % 7;
+    // If it's already Monday and past 12:00 UTC, go to next week
+    if (day === 1 && hour >= 12) {
+      daysUntilMonday = 7;
+    } else if (day > 1) {
+      daysUntilMonday = (8 - day) % 7;
+    }
+
+    nextMonday.setUTCDate(now.getUTCDate() + daysUntilMonday);
+    nextMonday.setUTCHours(12, 0, 0, 0); // Set to 12:00 PM UTC
+
+    const localTime = nextMonday.toLocaleTimeString([], {
+      hour: 'numeric',
+      minute: '2-digit',
+      timeZoneName: 'short'
+    });
+
+    const localSpan = document.getElementById('local-reset-time');
+    if (localSpan) localSpan.textContent = localTime.toUpperCase();
+  }
+
+  document.addEventListener('DOMContentLoaded', getLocalResetTime);
+</script>
+
+
+  <!-- Support Banner -->
+  <div class="support-banner" id="supportBanner">
+    <span>Enjoying this site?</span>
+    <a href="https://www.twitch.tv/products/damnitbennett" target="_blank" class="twitch-sub-button">
+      <img src="https://cdn.simpleicons.org/twitch/9146FF" alt="Twitch Logo" class="twitch-icon" />
+      Consider subscribing to DamnitBennett 🤘🏻
+    </a>
+    <button class="close-banner" aria-label="Close banner">&times;</button>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        const banner = document.getElementById('supportBanner');
+        if (banner && !localStorage.getItem('hideSupportBanner')) {
+          banner.classList.add('visible');
+        }
+      }, 4000);
+
+      const closeBtn = document.querySelector('.close-banner');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+          const banner = document.getElementById('supportBanner');
+          if (banner) {
+            banner.style.display = 'none';
+            localStorage.setItem('hideSupportBanner', 'true');
+          }
+        });
+      }
+    });
+  </script>
+	  <script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  const socialIcons = document.getElementById('social-icons');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+    socialIcons.classList.toggle('show');
+  });
+</script>
+<script>
+  function getLocalResetTimeFooter() {
+    const estReset = new Date();
+    estReset.setUTCHours(15, 0, 0, 0); // 3:00 PM UTC
+    const day = estReset.getUTCDay();
+    const diff = (1 + 7 - day) % 7 || 7;
+    estReset.setUTCDate(estReset.getUTCDate() + diff);
+
+    const localTime = estReset.toLocaleTimeString([], {
+      hour: 'numeric',
+      minute: '2-digit',
+      timeZoneName: 'short'
+    });
+
+    const localSpan = document.getElementById('local-reset-time-footer');
+    if (localSpan) localSpan.textContent = localTime.toUpperCase();
+  }
+
+  document.addEventListener('DOMContentLoaded', getLocalResetTimeFooter);
+</script>
+
+</body>
+</html>
