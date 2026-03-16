@@ -19,6 +19,29 @@ function getNextMonday12PMUTC() {
   return today12PMUTC;
 }
 
+function getLastMonday12PMUTC() {
+  const now = new Date();
+  const currentDay = now.getUTCDay();
+
+  const today12PMUTC = new Date(Date.UTC(
+    now.getUTCFullYear(),
+    now.getUTCMonth(),
+    now.getUTCDate(),
+    12, 0, 0, 0
+  ));
+
+  // If it's Monday and we're past 12PM UTC, last reset was today
+  if (currentDay === 1 && now.getTime() >= today12PMUTC.getTime()) {
+    return today12PMUTC;
+  }
+
+  // Otherwise go back to last Monday
+  const daysSinceMonday = currentDay === 0 ? 6 : currentDay - 1;
+  const lastMonday = new Date(today12PMUTC);
+  lastMonday.setUTCDate(today12PMUTC.getUTCDate() - daysSinceMonday);
+  return lastMonday;
+}
+
 function updateCountdown() {
   const countdownElement = document.getElementById('countdown-timer');
   if (!countdownElement) return;
@@ -167,7 +190,6 @@ async function loadSearchingState() {
         if (cop.name.toUpperCase() === 'REDACTED') {
           card.classList.add('searching-card');
         }
-
         card.innerHTML = `
           <div class="cop-title">${cop.name}</div>
           <img src="${cop.icon}" alt="${cop.name} Location">
@@ -208,28 +230,25 @@ function isLiveBasedOnSchedule(debug = false) {
   }
 }
 
-// Final logic on page load
 document.addEventListener("DOMContentLoaded", () => {
   updateCustomCountdown();
   isLiveBasedOnSchedule(false);
 
-  const now = new Date();
-  const resetTime = getNextMonday12PMUTC();
+  const lastReset = getLastMonday12PMUTC();
 
   fetch('data/vulture-locations.json')
     .then(res => res.json())
     .then(data => {
       const hasTimestamp = data.timestamp !== undefined;
-      const isFresh = hasTimestamp && new Date(data.timestamp) >= resetTime;
+      const isFresh = hasTimestamp && new Date(data.timestamp) >= lastReset;
       const hasData = data.cop1 && data.cop2;
 
-      if (now >= resetTime && (!hasData || !isFresh)) {
-        loadSearchingState(); // fallback mode after reset
+      if (!hasData || !isFresh) {
+        loadSearchingState();
       } else {
-        loadCopLocations();   // show current CoP locations
+        loadCopLocations();
       }
 
-      // Always run the countdown for next reset
       updateCountdown();
     })
     .catch(err => {
