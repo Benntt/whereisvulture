@@ -79,26 +79,29 @@ header {
   background-color: #111;
   border-bottom: 2px solid #ffc800;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;        /* desktop: single horizontal row */
   align-items: center;
+  justify-content: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  padding: 0.75rem 0;
+  padding: 0.5rem 2rem;
+  min-height: 60px;           /* CLS FIX: reserve nav height */
 }
 
 .nav-inner {
   display: flex;
+  flex-direction: row;        /* nav-links left, social-icons right */
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
   width: 100%;
-  padding: 0 2rem;
+  max-width: 1200px;
 }
 
 .nav-links {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0;                     /* padding on .nav-link handles spacing */
 }
 
 .nav-link {
