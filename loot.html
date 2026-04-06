@@ -3,272 +3,435 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Where Is Vulture</title>
+  <title>HVL — High Value Loot | Where Is Vulture</title>
+  <meta name="description" content="Complete Gray Zone Warfare HVL price list. See what Vulture pays for every high value loot item — updated for the 0.4 Spearhead update." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://whereisvulture.com/loot.html" />
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
-<link rel="icon" href="assets/favicon.png" type="image/png">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2821B6XCY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2821B6XCY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Y2821B6XCY');
+  </script>
+  <style>
+    .loot-table-section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      color: #ccc;
+    }
 
-  gtag('config', 'G-Y2821B6XCY');
-</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    .loot-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .filter-btn {
+      background: #111;
+      color: #ffc800;
+      border: 1px solid #ffc800;
+      padding: 6px 16px;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: #ffc800;
+      color: #000;
+    }
+
+    .loot-note {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 6px;
+    }
+
+    .loot-updated {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #555;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .new-badge {
+      background: #ffc800;
+      color: #000;
+      font-size: 0.65rem;
+      font-weight: bold;
+      padding: 1px 5px;
+      margin-left: 6px;
+      vertical-align: middle;
+      text-transform: uppercase;
+    }
+
+    .vulture-loot-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    .vulture-loot-table th {
+      background: #ffc800;
+      color: #000;
+      padding: 10px 12px;
+      text-align: left;
+      font-size: 0.85rem;
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .vulture-loot-table th:hover { background: #ffdb4d; }
+
+    .vulture-loot-table th .sort-arrow {
+      margin-left: 4px;
+      opacity: 0.5;
+      font-size: 0.75rem;
+    }
+
+    .vulture-loot-table th.sorted .sort-arrow { opacity: 1; }
+
+    .vulture-loot-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #222;
+      color: #ccc;
+      vertical-align: middle;
+    }
+
+    .vulture-loot-table tr:hover td { background: #1a1a1a; }
+
+    .vulture-loot-table .price-col {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .vulture-loot-table .confirmed {
+      color: #ffc800;
+    }
+
+    .hover-image {
+      cursor: help;
+      border-bottom: 1px dashed #555;
+    }
+
+    .hover-image:hover { color: #ffc800; }
+
+    .category-tag {
+      font-size: 0.7rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    #hover-preview {
+      position: fixed;
+      display: none;
+      width: 150px;
+      border: 2px solid #ffc800;
+      background: #000;
+      padding: 5px;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    #hover-preview img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .section-divider {
+      text-align: center;
+      color: #ffc800;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      padding: 12px 0 4px;
+      border-top: 1px solid #222;
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 600px) {
+      .vulture-loot-table th:nth-child(1),
+      .vulture-loot-table td:nth-child(1) { display: none; }
+      .vulture-loot-table { font-size: 0.85rem; }
+    }
+  </style>
 </head>
 <body>
   <div class="page-shell">
-    <!-- Full-width Top Navigation -->
-	 <nav class="top-nav redacted-menu">
-  <button class="hamburger" id="hamburger">&#9776;</button>
-  <div class="nav-inner">
-    <div class="nav-links" id="nav-links">
-      <a href="index.html" class="nav-link redacted-hover"><span class="link-text">HOME</span></a>
-      <a href="ranks.html" class="nav-link redacted-hover"><span class="link-text">RANKS</span></a>
-      <a href="loot.html" class="nav-link redacted-hover"><span class="link-text">HVL</span></a>
-      <a href="customs.html" class="nav-link redacted-hover"><span class="link-text">CUSTOM SERVERS</span></a>
-      <a href="who.html" class="nav-link redacted-hover"><span class="link-text">WHO IS VULTURE</span></a>
-      <a href="https://twitch.tv/damnitbennett" class="nav-link redacted-hover stream-label" id="stream-link">
-        <span id="live-indicator" class="live-dot"></span>
-        <span class="link-text">LIVE</span>
-      </a>
-    </div>
-    <div class="social-icons" id="social-icons">
-      <a href="https://twitch.tv/damnitbennett" target="_blank" class="social-link"><i class="fab fa-twitch"></i></a>
-      <a href="https://tiktok.com/@damnitbennett" target="_blank" class="social-link"><i class="fab fa-tiktok"></i></a>
-      <a href="https://twitter.com/damnitbennett" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
-      <a href="https://youtube.com/@damnitbennettLIVE" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
-      <a href="https://instagram.com/damnitbennett" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
-      <a href="https://discord.gg/damnitbennett" target="_blank" class="social-link"><i class="fab fa-discord"></i></a>
-    </div>
-  </div>
-</nav>
 
-   <!-- Centered Page Content -->
+    <nav class="top-nav redacted-menu" aria-label="Main navigation">
+      <button class="hamburger" id="hamburger" aria-label="Open navigation menu">&#9776;</button>
+      <div class="nav-inner">
+        <div class="nav-links" id="nav-links">
+          <a href="index.html" class="nav-link redacted-hover"><span class="link-text">HOME</span></a>
+          <a href="ranks.html" class="nav-link redacted-hover"><span class="link-text">RANKS</span></a>
+          <a href="loot.html" class="nav-link redacted-hover"><span class="link-text">HVL</span></a>
+          <a href="blueprints.html" class="nav-link redacted-hover"><span class="link-text">BLUEPRINTS</span></a>
+          <a href="who.html" class="nav-link redacted-hover"><span class="link-text">WHO IS VULTURE</span></a>
+          <a href="https://twitch.tv/damnitbennett" class="nav-link redacted-hover stream-label" id="stream-link" aria-label="Watch DamnitBennett live on Twitch">
+            <span id="live-indicator" class="live-dot"></span>
+            <span class="link-text">LIVE</span>
+          </a>
+        </div>
+        <div class="social-icons" id="social-icons">
+          <a href="https://twitch.tv/damnitbennett" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitch"><i class="fab fa-twitch"></i></a>
+          <a href="https://tiktok.com/@damnitbennett" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://twitter.com/damnitbennett" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter / X"><i class="fab fa-twitter"></i></a>
+          <a href="https://youtube.com/@damnitbennettLIVE" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://instagram.com/damnitbennett" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://discord.gg/damnitbennett" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Discord"><i class="fab fa-discord"></i></a>
+        </div>
+      </div>
+    </nav>
+
     <div class="page-container">
-<section class="loot-table-section">
-  <h1><span class="orange-text">High Value Loot</span></h1>
-  <p class="loot-note">* = confirmed prices based on in-game sales</p>
-  <table class="vulture-loot-table">
-    <thead>
-      <tr>
-        <th>Short</th>
-        <th>Full Name</th>
-        <th>Market Price</th>
-        <th>Vulture Pays</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>MTWatch</td><td><span class="hover-image" data-img="assets/MTWatch_D.webp">Majestic Titanium Watch</span></td><td>6000</td><td>*3000</td></tr>
-      <tr><td>PDRing</td><td><span class="hover-image" data-img="assets/PDRing_icon.webp">Platinum Ring</span></td><td>*5500</td><td>*2750</td></tr>
-      <tr><td>BCCard</td><td><span class="hover-image" data-img="assets/BCCard_icon.webp">Black Credit Card</span></td><td>4000</td><td>2000</td></tr>
-      <tr><td>GDRing</td><td><span class="hover-image" data-img="assets/Diamond_Ring.webp">Diamond Ring</span></td><td>2200</td><td>*1100</td></tr>
-      <tr><td>SWatch</td><td><span class="hover-image" data-img="assets/Sleek_Luxury_Watch.webp">Sleek Luxury Watch</span></td><td>2000</td><td>1000</td></tr>
-      <tr><td>PCCard</td><td><span class="hover-image" data-img="assets/Platinum_credit_card.webp">Platinum Credit Card</span></td><td>1600</td><td>800</td></tr>
-      <tr><td>Maoutai</td><td><span class="hover-image" data-img="assets/Moutai_icon.webp">Moutai - 50y</span></td><td>2500</td><td>1250</td></tr>
-      <tr><td>BLPhone</td><td><span class="hover-image" data-img="assets/BLPhone_inspect.webp">Black Luxury Phone</span></td><td>1200</td><td>600</td></tr>
-      <tr><td>EnHDD</td><td><span class="hover-image" data-img="assets/EnHDD_icon.webp">Encrypted Hard Disk Drive</span></td><td>1200</td><td>600</td></tr>
-      <tr><td>GCCard</td><td><span class="hover-image" data-img="assets/Gold_credit_card.webp">Gold Credit Card</span></td><td>800</td><td>400</td></tr>
-      <tr><td>SPendant</td><td><span class="hover-image" data-img="assets/Sapphire_Pendant.webp">Sapphire Pendant</span></td><td>750</td><td>*375</td></tr>
-      <tr><td>ENecklace</td><td><span class="hover-image" data-img="assets/Emerald_Necklace.webp">Emerald Necklace</span></td><td>720</td><td>*360</td></tr>
-      <tr><td>DCRing</td><td><span class="hover-image" data-img="assets/Diamond-Coral_Ring.webp">Diamond-Coral Ring</span></td><td>708</td><td>*354</td></tr>
-      <tr><td>DAEarrings</td><td><span class="hover-image" data-img="assets/DAEarrings_icon.webp">Diamond Earrings</span></td><td>*690</td><td>*345</td></tr>
-      <tr><td>ERing</td><td><span class="hover-image" data-img="assets/Elaborate_ring.webp">Elaborate Ring</span></td><td>*672</td><td>*336</td></tr>
-      <tr><td>PPEarrings</td><td><span class="hover-image" data-img="assets/Perfect_Pearl_Earrings.webp">Perfect Pearl Earrings</span></td><td>660</td><td>*330</td></tr>
-      <tr><td>Allanach</td><td><span class="hover-image" data-img="assets/AllanchScotch.webp">Allanach Single Malt Scotch - 40y</span></td><td>1250</td><td>625</td></tr>
-      <tr><td>LPhone</td><td><span class="hover-image" data-img="assets/LPhone_inspect.webp">Luxury Smartphone</span></td><td>600</td><td>300</td></tr>
-      <tr><td>LWatch</td><td><span class="hover-image" data-img="assets/Luxury_smartwatch.webp">Luxury Smartwatch</span></td><td>*600</td><td>*300</td></tr>
-      <tr><td>Breda</td><td><span class="hover-image" data-img="assets/Breda_rum_-_30Y.webp">Breda Rum - 30y</span></td><td>*2000</td><td>*1000</td></tr>
-      <tr><td>Intel</td><td><span class="hover-image" data-img="assets/Army_Intel.webp">Army Intel</span></td><td>*1280</td><td>320</td></tr>
-      <tr><td>DSLR</td><td><span class="hover-image" data-img="assets/Reflex_Camera.webp">Reflex Camera</span></td><td>*1280</td><td>*640</td></tr>
-      <tr><td>Tzintzimitl</td><td><span class="hover-image" data-img="assets/Tzintzimitl_tequila_-_25Y.webp">Tzintzimitl Tequila - 25y</span></td><td>528</td><td>264</td></tr>
-      <tr><td>Goodlad</td><td><span class="hover-image" data-img="assets/Goodlad_icon.webp">Goodlad Whisky - 20y</span></td><td>480</td><td>240</td></tr>
-      <tr><td>CCCard</td><td><span class="hover-image" data-img="assets/Common_credit_card.webp">Common Credit Card</span></td><td>*200</td><td>100</td></tr>
-      <tr><td>ReLaptop</td><td><span class="hover-image" data-img="assets/Reinforced_military_laptop.webp">Reinforced Military Laptop</span></td><td>768</td><td>384</td></tr>
-      <tr><td>DNecklace</td><td><span class="hover-image" data-img="assets/Dark_pearl_necklace.webp">Dark Pearl Necklace</span></td><td>*94</td><td>94</td></tr>
-      <tr><td>GRing</td><td><span class="hover-image" data-img="assets/Gemstone_Ring.webp">Gemstone Ring</span></td><td>173</td><td>*86</td></tr>
-      <tr><td>Necklace</td><td><span class="hover-image" data-img="assets/Gold_Necklace.webp">Gold Necklace</span></td><td>165</td><td>*82</td></tr>
-      <tr><td>Ring</td><td><span class="hover-image" data-img="assets/Gold_Ring.webp">Gold Ring</span></td><td>158</td><td>*79</td></tr>
-      <tr><td>SPhone</td><td><span class="hover-image" data-img="assets/Smartphone.webp">Smartphone</span></td><td>158</td><td>79</td></tr>
-      <tr><td>EPhone</td><td><span class="hover-image" data-img="assets/Expensive_Smartphone.webp">Expensive Smartphone</span></td><td>*150</td><td>*75</td></tr>
-      <tr><td>MWatch</td><td><span class="hover-image" data-img="assets/Modern_Watch.webp">Modern Watch</span></td><td>*150</td><td>*75</td></tr>
-      <tr><td>DigiCam</td><td><span class="hover-image" data-img="assets/DigitalCamera.webp">Digital Camera</span></td><td>140</td><td>*70</td></tr>
-      <tr><td>Intel</td><td><span class="hover-image" data-img="assets/Crime-related_intel.webp">Crime-related Intel</span></td><td>140</td><td>640</td></tr>
-      <tr><td>SWine</td><td><span class="hover-image" data-img="assets/Snake_Wine.webp">Snake Wine</span></td><td>*240</td><td>*120</td></tr>
-      <tr><td>Laptop</td><td><span class="hover-image" data-img="assets/Laptop_icon.webp">Laptop</span></td><td>168</td><td>84</td></tr>
-      <tr><td>DogTag</td><td><span class="hover-image" data-img="assets/LAF_Dog_Tag_inspect.webp">LAF Dog Tag</span></td><td>6</td><td>3</td></tr>
-    </tbody>
-  </table>
-</section>
+      <section class="loot-table-section">
+        <h1><span class="orange-text">High Value Loot</span></h1>
 
-<div id="hover-preview">
-  <img src="" alt="Preview" />
-</div>
+        <p class="loot-note">Hover item names to preview. Click column headers to sort. ✦ = confirmed in-game price.</p>
+        <p class="loot-updated">Updated for 0.4 Spearhead — prices being verified, check back</p>
 
-		<footer>
+        <div class="loot-filter-bar">
+          <button class="filter-btn active" data-filter="all">ALL</button>
+          <button class="filter-btn" data-filter="Jewellery">JEWELLERY</button>
+          <button class="filter-btn" data-filter="Funds">FUNDS</button>
+          <button class="filter-btn" data-filter="Electronics">ELECTRONICS</button>
+          <button class="filter-btn" data-filter="Vices">VICES</button>
+          <button class="filter-btn" data-filter="Evidence">EVIDENCE</button>
+          <button class="filter-btn" data-filter="Military">MILITARY</button>
+        </div>
+
+        <table class="vulture-loot-table" id="loot-table">
+          <thead>
+            <tr>
+              <th data-col="0">SHORT <span class="sort-arrow">↕</span></th>
+              <th data-col="1">ITEM <span class="sort-arrow">↕</span></th>
+              <th data-col="2">CATEGORY <span class="sort-arrow">↕</span></th>
+              <th data-col="3" class="price-col sorted">MARKET PRICE <span class="sort-arrow">↓</span></th>
+              <th data-col="4" class="price-col">VULTURE PAYS <span class="sort-arrow">↕</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- JEWELLERY -->
+            <tr data-category="Jewellery"><td>MTWatch</td><td><span class="hover-image" data-img="assets/MTWatch_D.webp">Majestic Titanium Watch</span></td><td><span class="category-tag">Jewellery</span></td><td class="price-col confirmed" data-value="8000">✦ $8,000</td><td class="price-col" data-value="3000">$3,000</td></tr>
+            <tr data-category="Jewellery"><td>PDRing</td><td><span class="hover-image" data-img="assets/PDRing_icon.webp">Platinum Ring</span></td><td><span class="category-tag">Jewellery</span></td><td class="price-col confirmed" data-value="10000">✦ $10,000</td><td class="price-col confirmed" data-value="2750">✦ $2,750</td></tr>
+            <tr data-category="Jewellery"><td>DRing</td><td><span class="hover-image" data-img="assets/Diamond_Ring.webp">Diamond Ring</span></td><td><span class="category-tag">Jewellery</span></td><td class="price-col" data-value="7700">$7,700</td><td class="price-col confirmed" data-value="1100">✦ $1,100</td></tr>
+            <tr data-category="Jewellery"><td>ENecklace</td><td><span class="hover-image" data-img="assets/Emerald_Necklace.webp">Emerald Necklace</span></td><td><span class="category-tag">Jewellery</span></td><td class="price-col" data-value="5300">$5,300</td><td class="price-col confirmed" data-value="360">✦ $360</td></tr>
+            <tr data-category="Jewellery"><td>DEarrings</td><td><span class="hover-image" data-img="assets/DAEarrings_icon.webp">Diamond Earrings</span></td><td><span class="category-tag">Jewellery</span></td><td class="price-col confirmed" data-value="5700">✦ $5,700</td><td class="price-col confirmed" data-value="345">✦ $345</td></tr>
+            <tr data-category="Jewellery"><td>DCRing</td><td><span class="hover-image" data-img="assets/Diamond-Coral_Ring.webp">Diamond-Coral Ring</span></td><td><span class="category-tag">Jewellery</span></td><td class="price-col" data-value="5250">$5,250</td><td class="price-col confirmed" data-value="354">✦ $354</td></tr>
+            <tr data-category="Jewellery"><td>ERing</td><td><span class="hover-image" data-img="assets/Elaborate_ring.webp">Elaborate Ring</span></td><td><span class="category-tag">Jewellery</span></td><td class="price-col confirmed" data-value="4400">✦ $4,400</td><td class="price-col confirmed" data-value="336">✦ $336</td></tr>
+            <tr data-category="Jewellery"><td>SPendant</td><td><span class="hover-image" data-img="assets/Sapphire_Pendant.webp">Sapphire Pendant</span></td><td><span class="category-tag">Jewellery</span></td><td class="price-col" data-value="3600">$3,600</td><td class="price-col confirmed" data-value="375">✦ $375</td></tr>
+            <tr data-category="Jewellery"><td>PPEarrings</td><td><span class="hover-image" data-img="assets/Perfect_Pearl_Earrings.webp">Perfect Pearl Earrings</span></td><td><span class="category-tag">Jewellery</span></td><td class="price-col" data-value="5000">$5,000</td><td class="price-col confirmed" data-value="330">✦ $330</td></tr>
+            <tr data-category="Jewellery"><td>SWatch</td><td><span class="hover-image" data-img="assets/Sleek_Luxury_Watch.webp">Sleek Luxury Watch</span></td><td><span class="category-tag">Jewellery</span></td><td class="price-col" data-value="1700">$1,700</td><td class="price-col" data-value="1000">$1,000</td></tr>
+            <tr data-category="Jewellery"><td>MCSAWatch</td><td><span class="hover-image" data-img="assets/MTWatch_D.webp">Master Carbon SEAL Automatic Watch</span> <span class="new-badge">NEW</span></td><td><span class="category-tag">Jewellery</span></td><td class="price-col" data-value="1450">$1,450</td><td class="price-col" data-value="725">$725</td></tr>
+            <tr data-category="Jewellery"><td>LWatch</td><td><span class="hover-image" data-img="assets/Luxury_smartwatch.webp">Luxury Smartwatch</span></td><td><span class="category-tag">Jewellery</span></td><td class="price-col confirmed" data-value="600">✦ $600</td><td class="price-col confirmed" data-value="300">✦ $300</td></tr>
+            <tr data-category="Jewellery"><td>DNecklace</td><td><span class="hover-image" data-img="assets/Dark_pearl_necklace.webp">Dark Pearl Necklace</span></td><td><span class="category-tag">Jewellery</span></td><td class="price-col" data-value="1350">$1,350</td><td class="price-col confirmed" data-value="94">✦ $94</td></tr>
+            <tr data-category="Jewellery"><td>GRing</td><td><span class="hover-image" data-img="assets/Gemstone_Ring.webp">Gemstone Ring</span></td><td><span class="category-tag">Jewellery</span></td><td class="price-col" data-value="820">$820</td><td class="price-col confirmed" data-value="86">✦ $86</td></tr>
+            <tr data-category="Jewellery"><td>GNecklace</td><td><span class="hover-image" data-img="assets/Gold_Necklace.webp">Gold Necklace</span></td><td><span class="category-tag">Jewellery</span></td><td class="price-col" data-value="180">$180</td><td class="price-col confirmed" data-value="82">✦ $82</td></tr>
+            <tr data-category="Jewellery"><td>GRing2</td><td><span class="hover-image" data-img="assets/Gold_Ring.webp">Gold Ring</span></td><td><span class="category-tag">Jewellery</span></td><td class="price-col" data-value="150">$150</td><td class="price-col confirmed" data-value="79">✦ $79</td></tr>
+            <tr data-category="Jewellery"><td>MWatch</td><td><span class="hover-image" data-img="assets/Modern_Watch.webp">Modern Watch</span></td><td><span class="category-tag">Jewellery</span></td><td class="price-col confirmed" data-value="150">✦ $150</td><td class="price-col confirmed" data-value="75">✦ $75</td></tr>
+
+            <!-- FUNDS -->
+            <tr data-category="Funds"><td>BCCard</td><td><span class="hover-image" data-img="assets/BCCard_icon.webp">Black Credit Card</span></td><td><span class="category-tag">Funds</span></td><td class="price-col" data-value="15000">$15,000</td><td class="price-col" data-value="2000">$2,000</td></tr>
+            <tr data-category="Funds"><td>PCCard</td><td><span class="hover-image" data-img="assets/Platinum_credit_card.webp">Platinum Credit Card</span></td><td><span class="category-tag">Funds</span></td><td class="price-col" data-value="6000">$6,000</td><td class="price-col" data-value="800">$800</td></tr>
+            <tr data-category="Funds"><td>GCCard</td><td><span class="hover-image" data-img="assets/Gold_credit_card.webp">Gold Credit Card</span></td><td><span class="category-tag">Funds</span></td><td class="price-col" data-value="2200">$2,200</td><td class="price-col" data-value="400">$400</td></tr>
+            <tr data-category="Funds"><td>CCCard</td><td><span class="hover-image" data-img="assets/Common_credit_card.webp">Common Credit Card</span></td><td><span class="category-tag">Funds</span></td><td class="price-col confirmed" data-value="600">✦ $600</td><td class="price-col" data-value="100">$100</td></tr>
+
+            <!-- ELECTRONICS -->
+            <tr data-category="Electronics"><td>BLPhone</td><td><span class="hover-image" data-img="assets/BLPhone_inspect.webp">Black Luxury Phone</span></td><td><span class="category-tag">Electronics</span></td><td class="price-col" data-value="1500">$1,500</td><td class="price-col" data-value="600">$600</td></tr>
+            <tr data-category="Electronics"><td>EnHDD</td><td><span class="hover-image" data-img="assets/EnHDD_icon.webp">Encrypted Hard Disk Drive</span></td><td><span class="category-tag">Electronics</span></td><td class="price-col" data-value="1200">$1,200</td><td class="price-col" data-value="600">$600</td></tr>
+            <tr data-category="Electronics"><td>LPhone</td><td><span class="hover-image" data-img="assets/LPhone_inspect.webp">Luxury Smartphone</span></td><td><span class="category-tag">Electronics</span></td><td class="price-col" data-value="1000">$1,000</td><td class="price-col" data-value="300">$300</td></tr>
+            <tr data-category="Electronics"><td>EPhone</td><td><span class="hover-image" data-img="assets/Expensive_Smartphone.webp">Expensive Smartphone</span></td><td><span class="category-tag">Electronics</span></td><td class="price-col confirmed" data-value="350">✦ $350</td><td class="price-col confirmed" data-value="75">✦ $75</td></tr>
+            <tr data-category="Electronics"><td>SPhone</td><td><span class="hover-image" data-img="assets/Smartphone.webp">Smartphone</span></td><td><span class="category-tag">Electronics</span></td><td class="price-col" data-value="250">$250</td><td class="price-col" data-value="79">$79</td></tr>
+
+            <!-- VICES -->
+            <tr data-category="Vices"><td>Allanach</td><td><span class="hover-image" data-img="assets/AllanchScotch.webp">Allanach Single Malt Scotch - 40y</span></td><td><span class="category-tag">Vices</span></td><td class="price-col" data-value="5500">$5,500</td><td class="price-col" data-value="625">$625</td></tr>
+            <tr data-category="Vices"><td>Moutai</td><td><span class="hover-image" data-img="assets/Moutai_icon.webp">Moutai - 50y</span></td><td><span class="category-tag">Vices</span></td><td class="price-col" data-value="5000">$5,000</td><td class="price-col" data-value="1250">$1,250</td></tr>
+            <tr data-category="Vices"><td>Breda</td><td><span class="hover-image" data-img="assets/Breda_rum_-_30Y.webp">Breda Rum - 30y</span></td><td><span class="category-tag">Vices</span></td><td class="price-col confirmed" data-value="3800">✦ $3,800</td><td class="price-col confirmed" data-value="1000">✦ $1,000</td></tr>
+            <tr data-category="Vices"><td>Tzintzimitl</td><td><span class="hover-image" data-img="assets/Tzintzimitl_tequila_-_25Y.webp">Tzintzimitl Tequila - 25y</span></td><td><span class="category-tag">Vices</span></td><td class="price-col" data-value="2000">$2,000</td><td class="price-col" data-value="264">$264</td></tr>
+            <tr data-category="Vices"><td>Goodlad</td><td><span class="hover-image" data-img="assets/Goodlad_icon.webp">Goodlad Whisky - 20y</span></td><td><span class="category-tag">Vices</span></td><td class="price-col" data-value="450">$450</td><td class="price-col" data-value="240">$240</td></tr>
+            <tr data-category="Vices"><td>SWine</td><td><span class="hover-image" data-img="assets/Snake_Wine.webp">Snake Wine</span></td><td><span class="category-tag">Vices</span></td><td class="price-col confirmed" data-value="399">✦ $399</td><td class="price-col confirmed" data-value="120">✦ $120</td></tr>
+            <tr data-category="Vices"><td>HCigs</td><td><span class="hover-image" data-img="assets/Hyperborea_Cigarettes.webp">Hyperborea Cigarettes</span> <span class="new-badge">NEW</span></td><td><span class="category-tag">Vices</span></td><td class="price-col" data-value="139">$139</td><td class="price-col" data-value="70">$70</td></tr>
+            <tr data-category="Vices"><td>LCigars</td><td><span class="hover-image" data-img="assets/Lambert_Cigars.webp">Lambert Cigars</span> <span class="new-badge">NEW</span></td><td><span class="category-tag">Vices</span></td><td class="price-col" data-value="282">$282</td><td class="price-col" data-value="141">$141</td></tr>
+            <tr data-category="Vices"><td>HPerfume</td><td><span class="hover-image" data-img="assets/Heavenly_Perfume.webp">Heavenly Perfume Bottle</span> <span class="new-badge">NEW</span></td><td><span class="category-tag">Vices</span></td><td class="price-col" data-value="335">$335</td><td class="price-col" data-value="168">$168</td></tr>
+            <tr data-category="Vices"><td>DPerfume</td><td><span class="hover-image" data-img="assets/Delicate_Perfume.webp">Delicate Perfume Bottle</span> <span class="new-badge">NEW</span></td><td><span class="category-tag">Vices</span></td><td class="price-col" data-value="150">$150</td><td class="price-col" data-value="75">$75</td></tr>
+            <tr data-category="Vices"><td>FPerfume</td><td><span class="hover-image" data-img="assets/Fragrant_Perfume.webp">Fragrant Perfume Bottle</span> <span class="new-badge">NEW</span></td><td><span class="category-tag">Vices</span></td><td class="price-col" data-value="75">$75</td><td class="price-col" data-value="38">$38</td></tr>
+
+            <!-- EVIDENCE -->
+            <tr data-category="Evidence"><td>VIPPass</td><td><span class="hover-image" data-img="assets/VIP_Passport.webp">VIP Passport</span> <span class="new-badge">NEW</span></td><td><span class="category-tag">Evidence</span></td><td class="price-col" data-value="6800">$6,800</td><td class="price-col" data-value="3400">$3,400</td></tr>
+            <tr data-category="Evidence"><td>TPassport</td><td><span class="hover-image" data-img="assets/Tourist_Passport.webp">Tourist Passport</span> <span class="new-badge">NEW</span></td><td><span class="category-tag">Evidence</span></td><td class="price-col" data-value="2625">$2,625</td><td class="price-col" data-value="1312">$1,312</td></tr>
+            <tr data-category="Evidence"><td>ReLaptop</td><td><span class="hover-image" data-img="assets/Reinforced_military_laptop.webp">Reinforced Military Laptop</span></td><td><span class="category-tag">Evidence</span></td><td class="price-col" data-value="2300">$2,300</td><td class="price-col" data-value="384">$384</td></tr>
+            <tr data-category="Evidence"><td>AIntel</td><td><span class="hover-image" data-img="assets/Army_Intel.webp">Army Intel</span></td><td><span class="category-tag">Evidence</span></td><td class="price-col confirmed" data-value="1280">✦ $1,280</td><td class="price-col" data-value="320">$320</td></tr>
+            <tr data-category="Evidence"><td>BizID</td><td><span class="hover-image" data-img="assets/Businessman_ID.webp">Businessman ID Card</span> <span class="new-badge">NEW</span></td><td><span class="category-tag">Evidence</span></td><td class="price-col" data-value="937">$937</td><td class="price-col" data-value="468">$468</td></tr>
+            <tr data-category="Evidence"><td>DSLR</td><td><span class="hover-image" data-img="assets/Reflex_Camera.webp">Reflex Camera</span></td><td><span class="category-tag">Evidence</span></td><td class="price-col confirmed" data-value="960">✦ $960</td><td class="price-col confirmed" data-value="640">✦ $640</td></tr>
+            <tr data-category="Evidence"><td>Laptop</td><td><span class="hover-image" data-img="assets/Laptop_icon.webp">Laptop</span></td><td><span class="category-tag">Evidence</span></td><td class="price-col" data-value="750">$750</td><td class="price-col" data-value="84">$84</td></tr>
+            <tr data-category="Evidence"><td>DrvLic</td><td><span class="hover-image" data-img="assets/Drivers_License.webp">Driver's License</span> <span class="new-badge">NEW</span></td><td><span class="category-tag">Evidence</span></td><td class="price-col" data-value="262">$262</td><td class="price-col" data-value="131">$131</td></tr>
+            <tr data-category="Evidence"><td>LocalID</td><td><span class="hover-image" data-img="assets/Local_ID.webp">Local ID Card</span> <span class="new-badge">NEW</span></td><td><span class="category-tag">Evidence</span></td><td class="price-col" data-value="187">$187</td><td class="price-col" data-value="93">$93</td></tr>
+            <tr data-category="Evidence"><td>DigiCam</td><td><span class="hover-image" data-img="assets/DigitalCamera.webp">Digital Camera</span></td><td><span class="category-tag">Evidence</span></td><td class="price-col" data-value="112">$112</td><td class="price-col confirmed" data-value="70">✦ $70</td></tr>
+            <tr data-category="Evidence"><td>TouristID</td><td><span class="hover-image" data-img="assets/Tourist_ID.webp">Tourist ID Card</span> <span class="new-badge">NEW</span></td><td><span class="category-tag">Evidence</span></td><td class="price-col" data-value="112">$112</td><td class="price-col" data-value="56">$56</td></tr>
+            <tr data-category="Evidence"><td>CrIntel</td><td><span class="hover-image" data-img="assets/Crime-related_intel.webp">Crime-related Intel</span></td><td><span class="category-tag">Evidence</span></td><td class="price-col" data-value="140">$140</td><td class="price-col" data-value="70">$70</td></tr>
+
+            <!-- MILITARY -->
+            <tr data-category="Military"><td>ANPYQ</td><td><span class="hover-image" data-img="assets/Army_Intel.webp">AN/PYQ-10</span> <span class="new-badge">NEW</span></td><td><span class="category-tag">Military</span></td><td class="price-col" data-value="3150">$3,150</td><td class="price-col" data-value="1575">$1,575</td></tr>
+            <tr data-category="Military"><td>DogTag</td><td><span class="hover-image" data-img="assets/LAF_Dog_Tag_inspect.webp">LAF Dog Tag</span></td><td><span class="category-tag">Military</span></td><td class="price-col" data-value="6">$6</td><td class="price-col" data-value="3">$3</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <div id="hover-preview">
+        <img src="" alt="Item preview" />
+      </div>
+
+      <footer>
         <section class="seo-lore">
           <div class="seo-content">
-            <h2>Who is Vulture?</h2>
-<p>
-  Vulture is a mythic black market vendor in <strong>Gray Zone Warfare.</strong> Scavenger, trader, and survivor. Each week, he relocates to two Major CoPs across Lamang, appearing <strong>every Monday at 3:00 PM UTC</strong> (<span id="local-reset-time-footer"></span>local time).
-</p>
-<p>
-  He collects gear from fallen players, restores it to <strong>95% durability</strong>, and sells it back, often at a price. Players can also trade <strong>HVL (High Value Loot)</strong> to increase their rank with him and unlock better gear.
-</p>
-<p>
-  Ex-military? Local rogue? No one knows for sure. But if you find him, your squad gets paid.
-</p>
-<center>
-      <div class="external-buttons">
-  <a href="https://grayzonewarfare.com" target="_blank" rel="noopener" class="tracker-button">Official Website</a>
-  <a href="https://lurk.ly/jTFNfq" target="_blank" rel="noopener" class="tracker-button">Play on Steam</a>
-</div>
-			 
-
-        <p>&copy; 2025 WhereIsVulture.com</p> </center>
+            <h2>What is High Value Loot?</h2>
+            <p>High Value Loot (HVL) is the currency of Vulture's reputation. Every item you sell him builds your rank, unlocking better gear, safes, and access to weapons you can't get anywhere else. He pays less than the market rate — but the rep is worth it.</p>
+            <p>Prices marked with ✦ are confirmed from in-game sales. All others are based on current community data and will be updated as 0.4 Spearhead prices stabilize.</p>
+            <div class="external-buttons">
+              <a href="https://grayzonewarfare.com" target="_blank" rel="noopener noreferrer" class="tracker-button">Official Website</a>
+              <a href="https://lurk.ly/jTFNfq" target="_blank" rel="noopener noreferrer" class="tracker-button">Play on Steam</a>
+            </div>
+            <p>&copy; 2025 WhereIsVulture.com</p>
+          </div>
+        </section>
       </footer>
     </div>
   </div>
-		
-		
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-        const previewBox = document.getElementById('hover-preview');
-    const previewImg = previewBox.querySelector('img');
 
-    document.querySelectorAll('.hover-image').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        const imgSrc = el.getAttribute('data-img');
-        previewImg.src = imgSrc;
-        previewBox.style.display = 'block';
-      });
-
-      el.addEventListener('mousemove', (e) => {
-        const padding = 20;
-        const boxWidth = previewBox.offsetWidth;
-        const boxHeight = previewBox.offsetHeight;
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
-
-        let left = e.clientX + padding;
-        let top = e.clientY + padding;
-
-        if (left + boxWidth > viewportWidth) {
-          left = e.clientX - boxWidth - padding;
-        }
-        if (top + boxHeight > viewportHeight) {
-          top = e.clientY - boxHeight - padding;
-        }
-
-        previewBox.style.left = `${left + window.scrollX}px`;
-        previewBox.style.top = `${top + window.scrollY}px`;
-      });
-
-      el.addEventListener('mouseleave', () => {
-        previewBox.style.display = 'none';
-        previewImg.src = '';
-      });
-    });
-  });
-</script>
-
-<footer>
-        <p>&copy; 2025 WhereIsVulture.com</p>
-      </footer>
-    </div>
+  <div class="support-banner" id="supportBanner">
+    <span>Enjoying this site?</span>
+    <a href="https://www.twitch.tv/products/damnitbennett" target="_blank" rel="noopener noreferrer" class="twitch-sub-button">
+      <img src="https://cdn.simpleicons.org/twitch/9146FF" alt="Twitch" class="twitch-icon" width="20" height="20" />
+      Consider subscribing to DamnitBennett 🤘🏻
+    </a>
+    <button class="close-banner" aria-label="Close banner">&times;</button>
   </div>
 
   <script src="js/script.js"></script>
-	  <script>
-  function getLocalResetTime() {
-    const estReset = new Date();
 
-    // Set to next Monday at 3:00 PM UTC
-estReset.setUTCHours(15, 0, 0, 0);
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
 
-    const day = estReset.getUTCDay();
-    const diff = (1 + 7 - day) % 7 || 7;
-    estReset.setUTCDate(estReset.getUTCDate() + diff);
+      // --- Hover image preview ---
+      const previewBox = document.getElementById('hover-preview');
+      const previewImg = previewBox.querySelector('img');
 
-    const localTime = estReset.toLocaleTimeString([], {
-      hour: 'numeric',
-      minute: '2-digit',
-      timeZoneName: 'short'
-    });
+      document.querySelectorAll('.hover-image').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          previewImg.src = el.getAttribute('data-img');
+          previewBox.style.display = 'block';
+        });
+        el.addEventListener('mousemove', (e) => {
+          const pad = 20;
+          let left = e.clientX + pad;
+          let top = e.clientY + pad;
+          if (left + previewBox.offsetWidth > window.innerWidth) left = e.clientX - previewBox.offsetWidth - pad;
+          if (top + previewBox.offsetHeight > window.innerHeight) top = e.clientY - previewBox.offsetHeight - pad;
+          previewBox.style.left = `${left + window.scrollX}px`;
+          previewBox.style.top = `${top + window.scrollY}px`;
+        });
+        el.addEventListener('mouseleave', () => {
+          previewBox.style.display = 'none';
+          previewImg.src = '';
+        });
+      });
 
-    const localSpan = document.getElementById('local-reset-time');
-    if (localSpan) {
-      localSpan.textContent = localTime.toUpperCase();
-    }
-  }
+      // --- Category filter ---
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-filter');
+          document.querySelectorAll('#loot-table tbody tr').forEach(row => {
+            row.style.display = (filter === 'all' || row.dataset.category === filter) ? '' : 'none';
+          });
+        });
+      });
 
-  document.addEventListener('DOMContentLoaded', getLocalResetTime);
-</script>
-<div class="support-banner" id="supportBanner">
-  <span>Enjoying this site?</span>
-  <a href="https://www.twitch.tv/products/damnitbennett" target="_blank" class="twitch-sub-button">
-    <img src="https://cdn.simpleicons.org/twitch/9146FF" alt="Twitch Logo" class="twitch-icon" />
-    Consider subscribing to DamnitBennett 🤘🏻
-  </a>
-  <button class="close-banner" aria-label="Close banner">&times;</button>
-</div>
+      // --- Column sort ---
+      let sortCol = 3;
+      let sortAsc = false;
 
+      document.querySelectorAll('.vulture-loot-table th').forEach(th => {
+        th.addEventListener('click', () => {
+          const col = parseInt(th.getAttribute('data-col'));
+          if (sortCol === col) {
+            sortAsc = !sortAsc;
+          } else {
+            sortCol = col;
+            sortAsc = false;
+          }
 
-      <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(() => {
-      const banner = document.querySelector('.support-banner');
-      if (banner) {
-        banner.classList.add('visible');
-      }
-    }, 4000); // Show after 4 seconds
-  });
-</script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(() => {
-      const banner = document.getElementById('supportBanner');
-      if (banner && !localStorage.getItem('hideSupportBanner')) {
-        banner.classList.add('visible');
-      }
-    }, 4000);
+          document.querySelectorAll('.vulture-loot-table th').forEach(h => {
+            h.classList.remove('sorted');
+            h.querySelector('.sort-arrow').textContent = '↕';
+          });
+          th.classList.add('sorted');
+          th.querySelector('.sort-arrow').textContent = sortAsc ? '↑' : '↓';
 
-    const closeBtn = document.querySelector('.close-banner');
-    if (closeBtn) {
-      closeBtn.addEventListener('click', () => {
+          const tbody = document.querySelector('#loot-table tbody');
+          const rows = Array.from(tbody.querySelectorAll('tr'));
+          rows.sort((a, b) => {
+            let aVal, bVal;
+            if (col === 3 || col === 4) {
+              aVal = parseInt(a.children[col].getAttribute('data-value')) || 0;
+              bVal = parseInt(b.children[col].getAttribute('data-value')) || 0;
+            } else {
+              aVal = a.children[col].textContent.trim().toLowerCase();
+              bVal = b.children[col].textContent.trim().toLowerCase();
+            }
+            if (aVal < bVal) return sortAsc ? -1 : 1;
+            if (aVal > bVal) return sortAsc ? 1 : -1;
+            return 0;
+          });
+          rows.forEach(r => tbody.appendChild(r));
+        });
+      });
+
+      // Default sort by market price descending on load
+      document.querySelector('[data-col="3"]').click();
+
+      // --- Support banner ---
+      setTimeout(() => {
+        const banner = document.getElementById('supportBanner');
+        if (banner && !localStorage.getItem('hideSupportBanner')) banner.classList.add('visible');
+      }, 4000);
+
+      document.querySelector('.close-banner').addEventListener('click', () => {
         const banner = document.getElementById('supportBanner');
         if (banner) {
           banner.style.display = 'none';
           localStorage.setItem('hideSupportBanner', 'true');
         }
       });
-    }
-  });
-</script>
-<script src="script.js"></script>
-<div id="hover-preview">
-  <img src="" alt="Preview" />
-</div>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const table = document.querySelector(".vulture-loot-table tbody");
 
-    const rows = Array.from(table.querySelectorAll("tr"));
-
-    // Sort rows based on the "Vulture Pays" column (4th column, index 3)
-    rows.sort((a, b) => {
-      const aValue = parseInt(a.children[3].textContent.replace(/\D/g, '')) || 0;
-      const bValue = parseInt(b.children[3].textContent.replace(/\D/g, '')) || 0;
-      return bValue - aValue;
+      // --- Hamburger ---
+      const hamburger = document.getElementById('hamburger');
+      hamburger.addEventListener('click', () => {
+        document.getElementById('nav-links').classList.toggle('show');
+        document.getElementById('social-icons').classList.toggle('show');
+      });
     });
+  </script>
 
-    // Reattach sorted rows
-    rows.forEach(row => table.appendChild(row));
-  });
-</script>
-<div id="hover-preview">
-  <img src="" alt="Preview" />
-</div>
 </body>
 </html>
