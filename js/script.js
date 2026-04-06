@@ -23,22 +23,21 @@ function getLastMonday12PMUTC() {
   const now = new Date();
   const currentDay = now.getUTCDay();
 
-  const today12PMUTC = new Date(Date.UTC(
+  // How many days back to last Monday
+  const daysSinceMonday = currentDay === 0 ? 6 : currentDay - 1;
+
+  const lastMonday = new Date(Date.UTC(
     now.getUTCFullYear(),
     now.getUTCMonth(),
-    now.getUTCDate(),
+    now.getUTCDate() - daysSinceMonday,
     12, 0, 0, 0
   ));
 
-  // If it's Monday and we're past 12PM UTC, last reset was today
-  if (currentDay === 1 && now.getTime() >= today12PMUTC.getTime()) {
-    return today12PMUTC;
+  // If that Monday's 12PM UTC hasn't happened yet, go back another week
+  if (lastMonday > now) {
+    lastMonday.setUTCDate(lastMonday.getUTCDate() - 7);
   }
 
-  // Otherwise go back to last Monday
-  const daysSinceMonday = currentDay === 0 ? 6 : currentDay - 1;
-  const lastMonday = new Date(today12PMUTC);
-  lastMonday.setUTCDate(today12PMUTC.getUTCDate() - daysSinceMonday);
   return lastMonday;
 }
 
